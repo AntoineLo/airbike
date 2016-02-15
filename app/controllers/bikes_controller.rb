@@ -6,13 +6,18 @@ class BikesController < ApplicationController
   end
 
   def create
-
+    @bike = @user.bikes.new(bike_params)
+    if @bike.save
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
   end
 
 
   private
 
-  def bikes_params
+  def bike_params
     params.require(:review).permit(:address, :kind, :helmet, :picture, :zip, :city, :baby_seat)
   end
   def find_user
