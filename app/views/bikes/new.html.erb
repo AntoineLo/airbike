@@ -1,11 +1,10 @@
 <%= simple_form_for [@user, @bike] do |form| %>
   <%= form.error_notification %>
-  <%= form.input :kind, collection: Ingredient.all %>
+  <%= form.input :kind, collection: Bike.all %>
   <%= form.input :address %>
   <%= form.input :zip %>
   <%= form.input :city %>
   <%= form.input :helmet %>
   <%= form.input :baby_seat %>
-  <%= form.input :photo, as: :attachinary %>
   <%= form.submit %>
 <% end %>
