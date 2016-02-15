@@ -5,11 +5,15 @@ class BikesController < ApplicationController
     @bike = Bike.new
   end
 
+  def create
+
+  end
+
 
   private
 
   def bikes_params
-    params.require(:review).permit(:address, :type, :helmet, :picture, :zip, :city, :baby_seat)
+    params.require(:review).permit(:address, :kind, :helmet, :picture, :zip, :city, :baby_seat)
   end
   def find_user
     @user = User.find(params[:user_id])
