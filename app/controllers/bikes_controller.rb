@@ -1,6 +1,10 @@
 class BikesController < ApplicationController
   before_action :find_user, only: [ :new, :create, :show ]
 
+  def show
+    @bike = Bike.all
+  end
+
   def new
     @bike = Bike.new
   end
@@ -12,6 +16,26 @@ class BikesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @bike = Bike.find(params[:id])
+  end
+
+  def update
+    @bike = Bike.find(params[:id])
+    @bike.update(bike_params)
+    if @bike.save
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to :back
   end
 
 
