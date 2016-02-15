@@ -4,6 +4,8 @@ As a visitor I can make a bike query
 
 As a visitor I can see the results of my query for a bike
 
+As a visitor I can see the detail of a bike anouncement
+
 As an owner I can create an announcement for a bike
 
 As an owner I can see my announcement details
