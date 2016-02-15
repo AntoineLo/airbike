@@ -7,4 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Bike.create(address: "Rue de la convention", :type: "vtt", :helmet "false", :city "Paris")
+Bike.create(address: "Rue de la convention", helmet: true, zip: "75015", city: "Paris", kind: "")
+Bike.create(address: "Rue paradis ", helmet: false, zip: "4000", city: "Nantes", kind: "ville")
