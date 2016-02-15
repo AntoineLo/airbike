@@ -1,6 +1,17 @@
 <div class="banner">
   <div class="banner-content">
     <h1>Welcome to Airbike</h1>
-    <a class="btn btn-warning btn-lg">GET IT</a>
+
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.error_notification %>
+      <% @dose.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <%= f.input :address, class: "form-control" %>
+      <%= f.input :start_date, class: "form-control" %>
+      <%= f.input :end_date, class: "form-control" %>
+      <%= f.button :submit, "Search a bike", class: "btn btn-warning" %>
+    <% end %>
+
   </div>
 </div>
