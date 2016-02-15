@@ -1,6 +1,8 @@
 As a visitor I can sign up 
 
-As a visitor I can make a bike query (à préciser)
+As a visitor I can make a bike query
+
+As a visitor I can see the results of my query for a bike
 
 As an owner I can create an announcement for a bike
 
