@@ -14,8 +14,6 @@ As an owner I can edit an announcements for a bike
 
 As an owner I can delete an announcements for a bike
 
-As an owner I can see my announcements for a bike
-
 As an owner I can create a review for a renter once the booking is done
 
 As a renter I can create a booking for a bike
