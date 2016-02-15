@@ -1,17 +1,11 @@
 <div class="banner">
   <div class="banner-content">
     <h1>Welcome to Airbike</h1>
-
-    <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.error_notification %>
-      <% @dose.errors.full_messages.each do |msg| %>
-        <%= msg %>
-      <% end %>
-      <%= f.input :address, class: "form-control" %>
-      <%= f.input :start_date, class: "form-control" %>
-      <%= f.input :end_date, class: "form-control" %>
-      <%= f.button :submit, "Search a bike", class: "btn btn-warning" %>
-    <% end %>
-
+    <form action="bikes/search" method="post" class="form-inline">
+      <input type="text" class="form-control" name="location" placeholder="Enter a location">
+      <input type="date" class="form-control" name="location" placeholder="Start rental date">
+      <input type="date" class="form-control" name="location" placeholder="Return date">
+      <input type="submit" value="Look for a bike" class="btn btn-warning">
+    </form>
   </div>
 </div>
