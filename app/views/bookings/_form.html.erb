@@ -2,8 +2,8 @@
   <div class="form-inline">
    <%= simple_form_for [@bike, @booking] do |f| %>
      <%= f.error_notification %>
-     <%= f.input :date_in, label: 'date_in', class: "form-control datepick", placeholder: "Select start date", name: "start_date" %>
-     <%= f.input :date_out, label: 'date_out', class: "form-control datepick", placeholder: "Select end date", name: "date_end" %>
+     <%= f.input :date_in, label: 'date_in', input_html: { class: "form-control datepick" }, placeholder: "Select start date", name: "start_date" %>
+     <%= f.input :date_out, label: 'date_out', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %>
      </br>
      <%= f.button :submit, label: 'Add booking', class: "btn btn-primary form-control" %>
    <% end %>
