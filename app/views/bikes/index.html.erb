@@ -1,31 +1,47 @@
-<div class="sidebar">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 row-space-2 col-md-7">
+<div class="wrapper">
+  <div class="page-content">
+
+    <div class="sidebar">
+    <div class="container">
+      <div class="row">
         <% @bikes.each do |bike| %>
-        <div class="card">
-          <div class="card-photo">
-            <%= image_tag bike.photo %>
-            <img src="http://placehold.it/100x100" alt="">
-          </div>
-          <div class="card-footer">
-            <div class="avatar">
-              <%= User.find(bike.user_id).avatar %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+          <%= link_to bike_path(bike) do %>
+            <div class="card card-color">
+              <div class="card-photo">
+                <% bike.photos.each do |photo| %>
+                  <% if photo.path.nil? %>
+                    <img src="http://placehold.it/300x200" alt="" class="img-fluid">
+                  <% else %>
+                    <%= cl_image_tag photo.path, width: 250, height: 200, class: "img-fluid", crop: :fill %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="card-footer">
+                <div class="card-footer-text">
+                  <h5><%= bike.description %></h5>
+                  <p><%= bike.kind %></p><%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
+                </div>
+                <div class="card-footer-avatar">
+                  <% if User.find(bike.user_id).picture.nil? %>
+                    <%= image_tag "http://placehold.it/50x50", class: "avatar-large" %>
+                  <% else %>
+                    <%= image_tag User.find(bike.user_id).picture, class: "avatar-large" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <h3><%= bike.description %></h3>
-            <p><%= bike.type %></p><% User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
-          </div>
+          <% end %>
+
+
+
+
         </div>
         <% end %>
       </div>
-      <div class="col-sm-0 row-space-2 col-md-5">
-        <div class="map">
-          <img src="http://placehold.it/500x1000" alt="">
-        </div>
-      </div>
     </div>
+    </div>
+
   </div>
-</div>
-
-
 </div>

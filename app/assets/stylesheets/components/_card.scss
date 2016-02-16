@@ -1,11 +1,39 @@
 .card {
-  text-align: center;
-  padding: 5px 70px;
+  padding: 10px;
 }
 .card-color {
-  background-color: #F5F5F5;
+  background-color: #EBEBEC;
   padding-top: 1px;
   padding-bottom: 1px;
-  border: orange 4px solid;
-  border-radius: 15px;
+  border: #F6F6F6 1px solid;
+  border-radius: 5px;
+  margin: 5px;
+}
+.card-photo {
+  display: block;
+  width: auto;
+  max-height: 100%;
+  text-align: center;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-footer-avatar {
+  flex: 0 0 20%;
+}
+.card-footer-text {
+  flex: 1 1 auto;
+}
+.card-footer-text > h5 {
+  color: #3D3D3A;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-footer-text p {
+  color: #3D3D3A;
+  font-weight: lighter;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
