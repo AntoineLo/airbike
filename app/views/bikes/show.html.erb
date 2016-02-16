@@ -1,0 +1,26 @@
+<div class="page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="card-photo">
+          <% @bike.photos.each do |photo| %>
+            <% if photo.path.nil? %>
+              <img src="http://placehold.it/300x200" alt="">
+            <% else %>
+              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-footer">
+          <div class="avatar">
+            <%= User.find(@bike.user_id).picture %>
+          </div>
+          <h3><%= @bike.description %></h3>
+          <p><%= @bike.kind %></p><%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
+        </div>
+        <br>
+        <%= link_to "Back to results", :back %>
+      </div>
+    </div>
+  </div>
+</div>
