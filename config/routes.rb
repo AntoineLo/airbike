@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :bikes
     end
+
+  resources :bikes, only: [:index]
 end
