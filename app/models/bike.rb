@@ -1,7 +1,7 @@
 class Bike < ActiveRecord::Base
   belongs_to :user
 
-  has_attachments :photos, maximum: 4
+  has_attachments :photos, maximum: 1
 
   validates :address, presence: true
   validates :description, presence: true

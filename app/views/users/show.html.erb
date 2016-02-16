@@ -16,59 +16,43 @@
 
 
     <div class="container text-center">
+
       <div class="tab-content" id="bio">
         <div class="card-color">
           <h1><%= image_tag current_user.picture %></h1>
           <h3><%= current_user.first_name %></h3>
         </div>
       </div>
+
       <div class="tab-content hidden" id="announces">
-
-      <div class="product">
-
-        <ul class="list-unstyled">
+          <div class="call-to-action">
+            <%= link_to "Ajouter un vélo",
+            new_user_bike_path(current_user),
+            class: "btn btn-small btn-treehouse" %>
+          </div>
           <% @user.bikes.each do |bike| %>
-            <li>
-               <%= bike.description %>
-               <%= bike.address %>
-               <%= bike.kind %>
-               <% bike.photos.each do |photo| %>
-                 <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill %>
-               <% end %>
-            </li>
-            <%= link_to edit_bike_path(bike) do %>
-              <i class="fa fa-pencil"></i>
+            <ul class="list-unstyled">
+              <li class="product">
+                <% bike.photos.each do |photo| %>
+                   <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                <% end %>
+                <div class='product-body'>
+                <h3><%= bike.kind %></h3>
+                <p><%= bike.description %></p>
+                </div>
+                <%= link_to edit_user_bike_path(current_user, bike) do %>
+                <i class="fa fa-pencil"></i>
+                <% end %>
+                </li>
               <% end %>
-            <% end %>
-        </ul>
-
-        <ul class="list-inline product-controls">
-          <i class="fa fa-pencil"></i>
-        </ul>
-      </div>
+            </ul>
       </div>
 
-<!--         <ul class="list-unstyled">
-              <% @user.bikes.each do |bike| %>
-            <li>
-               <%= bike.description %>
-               <%= bike.address %>
-               <%= bike.kind %>
-               <% bike.photos.each do |photo| %>
-                 <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill %>
-               <% end %>
-            </li>
-            <%= link_to edit_bike_path(bike) do %>
-              <i class="fa fa-pencil"></i>
-            <% end %>
-          <% end %>
-        </ul> -->
       <div class="tab-content hidden" id="bookings">
         <p>Contact me if you want.</p>
       </div>
+
     </div>
-
-
 
 
 
