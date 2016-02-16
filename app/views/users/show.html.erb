@@ -2,13 +2,11 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 
-my bikes :
-
- <%= @user.id %>
-
 <ul class="list">
       <% @user.bikes.each do |bike| %>
     <li>
+       <%= bike.description %>
+       <%= bike.address %>
        <%= bike.kind %>
        <% bike.photos.each do |photo| %>
          <%= cl_image_tag photo.path, width: 400, height: 200, crop: :fill %>

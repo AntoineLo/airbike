@@ -1,6 +1,7 @@
 <%= simple_form_for [@user, @bike] do |form| %>
   <%= form.error_notification %>
   <%= form.input :kind, collection: %w(VTT ville tandem) %>
+  <%= form.input :description %>
   <%= form.input :address %>
   <%= form.input :zip %>
   <%= form.input :city %>
