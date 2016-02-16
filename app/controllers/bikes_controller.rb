@@ -4,7 +4,7 @@ class BikesController < ApplicationController
 
   def index
     params
-    raise
+    @bikes = Bike.all
   end
 
   def show
