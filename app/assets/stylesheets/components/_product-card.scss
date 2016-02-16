@@ -62,7 +62,7 @@
 .product-controls a {
   padding: 0 20px;
   font-size: 17px;
-  color: #E6E6E6;
+  color: #FF4E00;
 }
 .product-controls a:hover {
   color: #D3473C !important
@@ -86,3 +86,10 @@
 .product:hover .product-upvote { transform: scale(1.2) }
 .product:hover .product-controls-hidden a { color: #E6E6E6 }
 
+#title {
+  position: relative;
+}
+ #title li:last-child {
+    position: absolute;
+    right: 10px;
+  }
