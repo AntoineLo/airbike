@@ -1,7 +1,11 @@
 class BikesController < ApplicationController
   before_action :find_user, only: [ :new, :create, :show ]
-  skip_before_action :authenticate_user!, only: [:new]
+  skip_before_action :authenticate_user!, only: [:index, :new]
 
+  def index
+    params
+    @bikes = Bike.all
+  end
 
   def show
     @bike = Bike.find(params[:id])

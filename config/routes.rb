@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :bikes, only: [:new, :create]
   end
 
-  resources :bikes, only: [:show, :edit, :update]
+  resources :bikes, only: [:index, :show, :edit, :update]
+
 end
