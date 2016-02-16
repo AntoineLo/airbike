@@ -20,8 +20,12 @@ class User < ActiveRecord::Base
   end
 
 
-  has_many :bookings
-  has_many :bikes
+  has_many :bookings, dependent: :destroy
+  has_many :bikes, dependent: :destroy
+  # has_attachment :photo ?????
+  # to be able to upload picture if user not logging with Facebook
 
+  validates :email, uniqueness: true, presence: true
 end
+
 
