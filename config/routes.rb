@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :bikes
     end
+
+  resources :bikes, only: [:index]
 end
