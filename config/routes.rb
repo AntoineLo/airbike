@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
-  devise_for :users
-  resources :users, only: [:show]
   root to: 'pages#home'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :users do
+
+  resources :users, only: [:show] do
     resources :bikes, only: [:new, :create]
   end
 
