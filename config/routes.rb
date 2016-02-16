@@ -14,12 +14,14 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show] do
-    resources :bikes, only: [:new, :create]
+    resources :bikes, only: [:new, :create, :edit, :update]
   end
+
 
 
   resources :bikes, only: [:index, :show, :edit, :update] do
     resources :bookings, only: [:new, :create]
   end
+
 
 end

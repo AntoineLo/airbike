@@ -1,4 +1,4 @@
-<%= simple_form_for [@user, @bike] do |form| %>
+<%= simple_form_for [current_user, @bike] do |form| %>
   <%= form.error_notification %>
   <%= form.input :kind, collection: %w(VTT ville tandem) %>
   <%= form.input :description %>
