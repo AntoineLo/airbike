@@ -1,85 +1,74 @@
 
-<div class="flexbox">
-
-  <div class="flex-item">
-    <div class="card">
-      <div class="card-color">
-        <h1><%= image_tag current_user.picture %></h1>
-        <h3><%= current_user.first_name %></h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="container flex-body">
-    <div class="tabs">
-      <a class="tab active" href="#">
-        <h3>Mes annonces</h3>
-      </a>
-      <a class="tab" href="#">
-        <h3>Mes réservations</h3>
-      </a>
-    </div>
-
-    <ul class="list-inline" id="title">
-      <li><h1>Mes annonces</h1></li>
-      <li><a href="#" class="btn-treehouse">Add a bike</a></li>
-    </ul>
-
-    <div class="product">
-        <div class='product-upvote'>
-          <div class='product-count'><img src="http://www.citybike-prague.com/userdata/articles/1450714377/5678251fb8c68-bike2.jpg" alt="kudoz" class="product-image"></div>
+        <div class="tabs">
+          <a class="tab active" data-target="#bio">
+            <p>Mon</p>
+            <h3>Profile</h3>
+          </a>
+          <a class="tab" data-target="#announces">
+            <p>Mes</p>
+            <h3>Annonces</h3>
+          </a>
+          <a class="tab" data-target="#bookings">
+            <p>Mes</p>
+            <h3>Réservations</h3>
+          </a>
         </div>
-      <div class='product-body'>
-        <h3>VTC Old School</h3>
-        <p>Super vélo. Bon état global, assise agréable.</p>
-      </div>
-      <ul class="list-inline product-controls">
-        <li><a href=""><i class="fa fa-pencil"></i></a></li>
-        <li><a href=""><i class="fa fa-trash"></i></a></li>
-      </ul>
-    </div>
-    <div class="product">
-        <div class='product-upvote'>
-          <div class='product-count'><img src="http://www.nutri-cycles.com/documents/Image/velo-hybride-6.jpg" alt="kudoz" class="product-image"></div>
+
+
+    <div class="container text-center">
+      <div class="tab-content" id="bio">
+        <div class="card-color">
+          <h1><%= image_tag current_user.picture %></h1>
+          <h3><%= current_user.first_name %></h3>
         </div>
-      <div class='product-body'>
-        <h3>Vélo de course</h3>
-        <p>Super vélo. Bon état global, assise agréable.</p>
       </div>
-      <ul class="list-inline product-controls">
-        <li><a href=""><i class="fa fa-pencil"></i></a></li>
-        <li><a href=""><i class="fa fa-trash"></i></a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="tab-content hidden" id="announces">
 
-  <div class="flex-item">
-    <div class="card">
-      <div class="card-color">
-        <h1>????</h1>
-        <h3>????</h3>
+      <div class="product">
+
+        <ul class="list-unstyled">
+          <% @user.bikes.each do |bike| %>
+            <li>
+               <%= bike.description %>
+               <%= bike.address %>
+               <%= bike.kind %>
+               <% bike.photos.each do |photo| %>
+                 <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill %>
+               <% end %>
+            </li>
+            <%= link_to edit_bike_path(bike) do %>
+              <i class="fa fa-pencil"></i>
+              <% end %>
+            <% end %>
+        </ul>
+
+        <ul class="list-inline product-controls">
+          <i class="fa fa-pencil"></i>
+        </ul>
+      </div>
+      </div>
+
+<!--         <ul class="list-unstyled">
+              <% @user.bikes.each do |bike| %>
+            <li>
+               <%= bike.description %>
+               <%= bike.address %>
+               <%= bike.kind %>
+               <% bike.photos.each do |photo| %>
+                 <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill %>
+               <% end %>
+            </li>
+            <%= link_to edit_bike_path(bike) do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          <% end %>
+        </ul> -->
+      <div class="tab-content hidden" id="bookings">
+        <p>Contact me if you want.</p>
       </div>
     </div>
-  </div>
-
-</div>
 
 
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
 
-<ul class="list">
-      <% @user.bikes.each do |bike| %>
-    <li>
-       <%= bike.description %>
-       <%= bike.address %>
-       <%= bike.kind %>
-       <% bike.photos.each do |photo| %>
-         <%= cl_image_tag photo.path, width: 400, height: 200, crop: :fill %>
-       <% end %>
-    </li>
-    <%= link_to "Modifier les caractéristiques", edit_bike_path(bike) %>
-  <% end %>
-</ul>
 
