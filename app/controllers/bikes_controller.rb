@@ -1,8 +1,12 @@
 class BikesController < ApplicationController
   before_action :find_user, only: [ :new, :create, :show ]
 
+  def index
+    @bikes
+  end
+
   def show
-    @bike = Bike.all
+    @bikes = Bike.all
   end
 
   def new

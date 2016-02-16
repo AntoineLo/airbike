@@ -1,11 +1,11 @@
 <div class="banner">
   <div class="banner-content">
     <h1>Welcome to Airbike</h1>
-    <form action="bikes/search" method="post" class="form-inline">
-      <input type="text" class="form-control" name="location" placeholder="Enter a location">
-      <input type="date" class="form-control" name="location" placeholder="Start rental date">
-      <input type="date" class="form-control" name="location" placeholder="Return date">
-      <input type="submit" value="Look for a bike" class="btn btn-warning">
-    </form>
+    <%= simple_form_for bikes_path, :method => 'get', class: "form-inline" do |f| %>
+      <%= f.input :location, label: false, placeholder: "Location" %>
+      <%= f.input :start_date, class: "datepick", placeholder: "Start date", label: false %>
+      <%= f.input :end_date, class: "datepick", placeholder: "Return date", label: false %>
+      <%= f.button :submit, "Look for a bike", :class => "btn btn-warning" %>
+    <% end %>
   </div>
 </div>
