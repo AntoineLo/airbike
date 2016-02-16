@@ -1,29 +1,55 @@
-<div class="container">
-  <div class="tabs">
-    <a class="tab active" href="#">
-      <h3>Mes annonces</h3>
-    </a>
-    <a class="tab" href="#">
-      <h3>Mes réservations</h3>
-    </a>
-  </div>
+<div class="flexbox">
 
-  <ul class="list-inline" id="title">
-    <li><h1>Mes annonces</h1></li>
-    <li><a href="#" class="btn-treehouse">Add a bike</a></li>
-  </ul>
-
-  <div class="product">
-      <div class='product-upvote'>
-        <div class='product-count'><img src="http://www.citybike-prague.com/userdata/articles/1450714377/5678251fb8c68-bike2.jpg" alt="kudoz" class="product-image"></div>
+  <div class="flex-item">
+    <div class="card">
+      <div class="card-color">
+        <h1><%= image_tag current_user.picture %></h1>
+        <h3><%= current_user.first_name %></h3>
       </div>
-    <div class='product-body'>
-      <h3>VTC Old School</h3>
-      <p>Super vélo. Bon état global, assise agréable.</p>
     </div>
-    <ul class="list-inline product-controls">
-      <li><a href=""><i class="fa fa-share"></i></a></li>
-      <li><a href=""><i class="fa fa-trash"></i></a></li>
-    </ul>
   </div>
+
+  <div class="container flex-body">
+    <div class="tabs">
+      <a class="tab active" href="#">
+        <h3>Mes annonces</h3>
+      </a>
+      <a class="tab" href="#">
+        <h3>Mes réservations</h3>
+      </a>
+    </div>
+
+    <ul class="list-inline" id="title">
+      <li><h1>Mes annonces</h1></li>
+      <li><a href="#" class="btn-treehouse">Add a bike</a></li>
+    </ul>
+
+    <div class="product">
+        <div class='product-upvote'>
+          <div class='product-count'><img src="http://www.citybike-prague.com/userdata/articles/1450714377/5678251fb8c68-bike2.jpg" alt="kudoz" class="product-image"></div>
+        </div>
+      <div class='product-body'>
+        <h3>VTC Old School</h3>
+        <p>Super vélo. Bon état global, assise agréable.</p>
+      </div>
+      <ul class="list-inline product-controls">
+        <li><a href=""><i class="fa fa-pencil"></i></a></li>
+        <li><a href=""><i class="fa fa-trash"></i></a></li>
+      </ul>
+    </div>
+    <div class="product">
+        <div class='product-upvote'>
+          <div class='product-count'><img src="http://www.nutri-cycles.com/documents/Image/velo-hybride-6.jpg" alt="kudoz" class="product-image"></div>
+        </div>
+      <div class='product-body'>
+        <h3>Vélo de course</h3>
+        <p>Super vélo. Bon état global, assise agréable.</p>
+      </div>
+      <ul class="list-inline product-controls">
+        <li><a href=""><i class="fa fa-pencil"></i></a></li>
+        <li><a href=""><i class="fa fa-trash"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
