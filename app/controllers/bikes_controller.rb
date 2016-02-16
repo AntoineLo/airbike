@@ -1,6 +1,6 @@
 class BikesController < ApplicationController
   before_action :find_user, only: [ :new, :create, :show ]
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :new]
 
   def index
     params
@@ -8,7 +8,7 @@ class BikesController < ApplicationController
   end
 
   def show
-    @bikes = Bike.all
+    @bike = Bike.find(params[:id])
   end
 
   def new
@@ -32,7 +32,7 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
     @bike.update(bike_params)
     if @bike.save
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -48,7 +48,7 @@ class BikesController < ApplicationController
   private
 
   def bike_params
-    params.require(:review).permit(:address, :kind, :helmet, :picture, :zip, :city, :baby_seat)
+    params.require(:bike).permit(:address, :kind, :helmet, :picture, :zip, :description, :city, :baby_seat, photos: [])
   end
   def find_user
     @user = User.find(params[:user_id])

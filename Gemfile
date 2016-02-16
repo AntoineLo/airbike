@@ -18,6 +18,11 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'sqlite3'
 gem 'omniauth-facebook'
+gem 'cloudinary'
+gem 'attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
