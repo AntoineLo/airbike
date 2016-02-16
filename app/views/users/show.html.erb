@@ -12,5 +12,6 @@
          <%= cl_image_tag photo.path, width: 400, height: 200, crop: :fill %>
        <% end %>
     </li>
+    <%= link_to "Modifier les caractéristiques", edit_bike_path(bike) %>
   <% end %>
 </ul>
