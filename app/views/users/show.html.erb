@@ -22,7 +22,11 @@
 
     <ul class="list-inline" id="title">
       <li><h1>Mes annonces</h1></li>
-      <li><a href="#" class="btn-treehouse">Add a bike</a></li>
+      <li>
+        <%= link_to new_user_bike_url(current_user) do %>
+          <p class="btn-treehouse">Add a bike</p>
+        <% end %>
+        </li>
     </ul>
 
     <div class="product">
