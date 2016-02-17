@@ -49,24 +49,31 @@
                   </ul>
             </div>
             <div class="tab-content hidden" id="bookings">
-              <div class="call-to-action">
-                  <%= link_to "Louer un vélo", bike_path, class: "btn btn-small btn-danger" %>
-              </div>
-                <% @user.bookings.each do |booking| %>
-                    <ul class="list-unstyled">
-                      <li class="product">
-                        <% booking.bike.photos.each do |photo| %>
-                           <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
-                        <% end %>
-                        <div class='product-body'>
-                          <h3><%= booking.bike.kind %></h3>
-                          <p><%= booking.bike.description %></p>
-                          <%= booking.date_in %>
-                          <%= booking.date_out %>
-                        </div>
-                      </li>
-                    </ul>
-                <% end %>
+              <% @user.bookings.each do |booking| %>
+                  <ul class="list-unstyled product">
+                    <li class="user-pic">
+                      <% if booking.bike.user.picture.nil? %>
+                        <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
+                      <% else %>
+                        <%= image_tag booking.bike.user.picture, class: "avatar-large" %>
+                      <% end %>
+                    </li>
+                    <li class="product-pic">
+                      <% booking.bike.photos.each do |photo| %>
+                         <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                      <% end %>
+                    </li>
+                    <li class='product-body'>
+                      <h3><%= booking.bike.kind %></h3>
+                      <p><%= booking.bike.description %></p>
+                      <%= booking.date_in %>
+                      <%= booking.date_out %>
+                    </li>
+                    <li class="status">
+                      <p>Status: <%= booking.status %></p>
+                    </li>
+                  </ul>
+              <% end %>
             </div>
           </div>
       </div><!-- end of announces-booking -->
