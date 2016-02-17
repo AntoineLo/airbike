@@ -3,6 +3,6 @@
   position: fixed;
   float: right;
   overflow-y: auto;
-  height: 100vh;
+  height: calc(100vh - 70px);
   width: 100%;
 }
