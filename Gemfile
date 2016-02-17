@@ -22,10 +22,11 @@ gem 'attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'geocoder'
-
+gem 'gmaps4rails'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-underscore'
 end
 
 group :development, :test do
