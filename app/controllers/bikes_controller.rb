@@ -6,7 +6,7 @@ class BikesController < ApplicationController
     @start_date = params[:start_date]
     @end_date = params[:end_date]
     @bikes = Bike.near(params[:location], 10)
-    @markers = Gmaps4rails.build_markers(@bikes) do |bike, marker|
+    @markers = Gmaps4rails.build_markers(@flats) do |bike, marker|
       marker.lat bike.latitude
       marker.lng bike.longitude
     end
