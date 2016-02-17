@@ -50,26 +50,23 @@
             </div>
             <div class="tab-content hidden" id="bookings">
               <div class="call-to-action">
-                  <%= link_to "Ajouter un vélo",
-                  new_user_bike_path(current_user),
-                  class: "btn btn-small btn-danger" %>
-                </div>
-                <% @user.bikes.each do |bike| %>
-                  <ul class="list-unstyled">
-                    <li class="product">
-                      <% bike.photos.each do |photo| %>
-                         <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
-                      <% end %>
-                      <div class='product-body'>
-                      <h3><%= bike.kind %></h3>
-                      <p><%= bike.description %></p>
-                      </div>
-                      <%= link_to edit_user_bike_path(current_user, bike) do %>
-                      <i class="fa fa-pencil green"></i>
-                      <% end %>
+                  <%= link_to "Louer un vélo", bike_path, class: "btn btn-small btn-danger" %>
+              </div>
+                <% @user.bookings.each do |booking| %>
+                    <ul class="list-unstyled">
+                      <li class="product">
+                        <% booking.bike.photos.each do |photo| %>
+                           <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                        <% end %>
+                        <div class='product-body'>
+                          <h3><%= booking.bike.kind %></h3>
+                          <p><%= booking.bike.description %></p>
+                          <%= booking.date_in %>
+                          <%= booking.date_out %>
+                        </div>
                       </li>
-                    <% end %>
-                  </ul>
+                    </ul>
+                <% end %>
             </div>
           </div>
       </div><!-- end of announces-booking -->
