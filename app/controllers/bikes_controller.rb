@@ -3,10 +3,13 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :new]
 
   def index
-    @location = params[:location]
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    @bikes = Bike.all
+    @bikes = Bike.where.not(latitude: nil)
+    @markers = Gmaps4rails.build_markers(@bikes) do |bike, marker|
+      marker.lat bike.latitude
+      marker.lng bike.longitude
+    end
   end
 
   def show
