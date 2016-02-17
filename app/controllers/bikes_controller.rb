@@ -15,6 +15,7 @@ class BikesController < ApplicationController
   def show
     @bike = Bike.find(params[:id])
     @bike_coordinates = { lat: @bike.latitude, lng: @bike.longitude }
+    @booking = Booking.new
   end
 
   def new
