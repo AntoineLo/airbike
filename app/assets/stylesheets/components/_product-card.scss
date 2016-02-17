@@ -6,6 +6,16 @@
   transition: all 0.15s ease;
 }
 
+.user-pic {
+  flex: 0 0 15%;
+}
+.product-pic {
+  flex: 0 0 20%;
+}
+.status {
+  flex: 0 0 15%;
+}
+
 /* Body design */
 .product-body {
   flex: 1 1 auto;
