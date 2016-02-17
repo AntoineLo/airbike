@@ -1,68 +1,51 @@
 <div class="container-fluid">
-  <div class="row">
-      <div class="bike col-xs-6 text-center">
+  <div class="row colored">
+
+      <div class="return">
+        <%= link_to "Back to results", :back, :class => 'btn btn-treehouse' %>
+      </div>
+
+      <div class="bike col-xs-12 text-center" id = "photo-bike">
           <% @bike.photos.each do |photo| %>
             <% if photo.path.nil? %>
               <img src="http://placehold.it/300x200" alt="">
             <% else %>
-              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, :class => 'avatar-other' %>
             <% end %>
           <% end %>
       </div>
-    <div class="content-booking">
 
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="page-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <div class="card-photo">
-          <% @bike.photos.each do |photo| %>
-            <% if photo.path.nil? %>
-              <img src="http://placehold.it/300x200" alt="">
-            <% else %>
-              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="card-footer">
-          <div class="avatar">
-            <%= User.find(@bike.user_id).picture %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="content col-xs-6 text-center" id="content-bike">
+              <h3>type de vélo : </h3>
+              <p><%= @bike.kind %></p>
+              <h3>Description : </h3>
+              <p><%= @bike.description %>
           </div>
-          <h3><%= @bike.description %></h3>
-          <p><%= @bike.kind %></p><%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
+          <div class="booking col-xs-6 text-center" id="booking-bike">
+              <h3>Choisissez vos dates </h3>
+<!--               <div class="container padded"> -->
+                <div class="form-inline text-center">
+                 <%= simple_form_for [@bike, @booking] do |f| %>
+                   <%= f.error_notification %>
+                   <ul class = "list-unstyled">
+                     <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
+                     <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
+                   </ul>
+                   </br>
+                   <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
+                 <% end %>
+<!--                 </div> -->
+              </div>
+          </div>
         </div>
-        <br>
-        <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-            $(document).ready(function() {
-              var coord = <%= raw @flat_coordinates.to_json %>;
-              alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
-            });
-          <% end %>
-        <% end %>
-        <%= link_to "Back to results", :back %>
-        <br>
-        <%= link_to "Book this bike", new_bike_booking_path(@bike) %>
       </div>
-    </div>
+
   </div>
 </div>
+
+
+
+
+
