@@ -1,3 +1,11 @@
 .page-content {
   margin-top: 70px;
 }
+.scroll_fixed {
+    position:absolute;
+    top:210;
+}
+.scroll_fixed.fixed {
+    position:fixed;
+    top:0;
+}
