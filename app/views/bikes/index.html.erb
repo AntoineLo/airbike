@@ -24,10 +24,10 @@
                   <p><%= bike.kind %></p><%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
                 </div>
                 <div class="card-footer-avatar">
-                  <% if User.find(bike.user_id).picture.nil? %>
+                  <% if bike.user.picture.nil? %>
                     <%= image_tag "http://placehold.it/50x50", class: "avatar-large" %>
                   <% else %>
-                    <%= image_tag User.find(bike.user_id).picture, class: "avatar-large" %>
+                    <%= image_tag bike.user.picture, class: "avatar-large" %>
                   <% end %>
                 </div>
               </div>
