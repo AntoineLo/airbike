@@ -19,6 +19,14 @@
           <p><%= @bike.kind %></p><%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
         </div>
         <br>
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+            $(document).ready(function() {
+              var coord = <%= raw @flat_coordinates.to_json %>;
+              alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
+            });
+          <% end %>
+        <% end %>
         <%= link_to "Back to results", :back %>
       </div>
     </div>
