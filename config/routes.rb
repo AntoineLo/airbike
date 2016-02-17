@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show] do
+    resources :bookings, only: [:destroy]
     resources :bikes, only: [:new, :create, :edit, :update]
   end
 
