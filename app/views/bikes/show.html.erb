@@ -1,3 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="bike col-xs-6 text-center">
+          <% @bike.photos.each do |photo| %>
+            <% if photo.path.nil? %>
+              <img src="http://placehold.it/300x200" alt="">
+            <% else %>
+              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+            <% end %>
+          <% end %>
+      </div>
+    <div class="content-booking">
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="page-content">
   <div class="container">
     <div class="row">
