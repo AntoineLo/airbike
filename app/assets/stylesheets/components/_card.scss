@@ -38,3 +38,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.design-description {
+  background-color: #3B5998;
+  padding-left: 10px;
+  opacity: 0.4;
+  border-radius: 10px;
+  width: 250px;
+  height: 100px;
+  p {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}

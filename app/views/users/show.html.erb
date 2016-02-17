@@ -58,11 +58,12 @@
                         <% booking.bike.photos.each do |photo| %>
                            <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
                         <% end %>
-                        <div class='product-body'>
-                          <h3><%= booking.bike.kind %></h3>
-                          <p><%= booking.bike.description %></p>
-                          <%= booking.date_in %>
-                          <%= booking.date_out %>
+                        <div class='product-body flexbox'>
+                          <h3 class="flex-item"><%= booking.bike.kind %></h3>
+                          <div class="design-description text-justify">
+                            <p class="flex-item"><%= booking.bike.description %></p>
+                          </div>
+                          <p class="flex-item">From <%= booking.date_in %> until <%= booking.date_out %></p>
                         </div>
                       </li>
                     </ul>
