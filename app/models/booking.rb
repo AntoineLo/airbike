@@ -6,5 +6,4 @@ class Booking < ActiveRecord::Base
   validates :date_out, presence: true
   validates :user_id, presence: true
   validates :bike_id, presence: true
-  validates :bike_id, uniqueness: { scope: :user_id }
 end
