@@ -1,5 +1,6 @@
 .tabs {
   display: flex;
+  margin-left: auto;
   padding: 15px 0px 2px 5px
 }
 .tabs a {
@@ -20,8 +21,8 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
-  flex: 0 0 33%;
+  background: #f1a066;
+  flex: 0 0 50%;
   text-align: center;
   padding: 5px 0;
 }
@@ -32,8 +33,8 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: #FF4E00;
-  color: black;
+  background: #e86100;
+  color: white;
 }
 
 .call-to-action {
