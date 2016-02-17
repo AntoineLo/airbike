@@ -1,34 +1,74 @@
+<div class="container-fluid" id="main-wrapper">
+  <div class="row">
 
-        <div class="tabs">
-          <a class="tab active" data-target="#bio">
-            <p>Mon</p>
-            <h3>Profile</h3>
-          </a>
-          <a class="tab" data-target="#announces">
-            <p>Mes</p>
-            <h3>Annonces</h3>
-          </a>
-          <a class="tab" data-target="#bookings">
-            <p>Mes</p>
-            <h3>Réservations</h3>
-          </a>
-        </div>
+    <div id="profile" class="hidden-xs hidden-sm col-md-2 text-center">
+        <ul class= "list-unstyled">
+          <li id="main-avatar"><%= image_tag current_user.picture, class: "avatar-large avatar-square " %></li>
+<!--           <li><%= @user.picture %></li> -->
+          <li><%= @user.first_name %></li>
+          <li><%= @user.last_name %></li>
+        </ul>
+    </div>
+
+    <div id="content" class="col-md-10"> <!-- content -->
+
+      <div class="tabs">   <!-- TABS -->
+        <a class="tab active" data-target="#announces">
+          <p>Mes</p>
+          <h3>Annonces</h3>
+        </a>
+        <a class="tab" data-target="#bookings">
+          <p>Mes</p>
+          <h3>Réservations</h3>
+        </a>
+      </div>   <!-- end of TABS -->
+
+      <div class="announces-booking"> <!--announces-booking -->
+          <div class="container text-center">
+            <div class="tab-content active" id="announces">
+                <div class="call-to-action">
+                  <%= link_to "Ajouter un vélo",
+                  new_user_bike_path(current_user),
+                  class: "btn btn-small btn-danger" %>
+                </div>
+                <% @user.bikes.each do |bike| %>
+                  <ul class="list-unstyled">
+                    <li class="product">
+                      <% bike.photos.each do |photo| %>
+                         <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                      <% end %>
+                      <div class='product-body'>
+                      <h3><%= bike.kind %></h3>
+                      <p><%= bike.description %></p>
+                      </div>
+                      <%= link_to edit_user_bike_path(current_user, bike) do %>
+                      <i class="fa fa-pencil green"></i>
+                      <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+            </div>
+            <div class="tab-content hidden" id="bookings">
+              <p>Contact me if you want.</p>
+            </div>
+          </div>
+      </div><!-- end of announces-booking -->
+
+    </div>   <!-- end of content -->
+
+  </div> <!-- end of row -->
+</div> <!-- end of main-wrapper -->
 
 
-    <div class="container text-center">
 
-      <div class="tab-content" id="bio">
-        <div class="card-color">
-          <h1><%= image_tag current_user.picture %></h1>
-          <h3><%= current_user.first_name %></h3>
-        </div>
-      </div>
 
-      <div class="tab-content hidden" id="announces">
+<!-- ANNOUNCES OR BOOKINGS  -->
+<!--     <div class="container text-center">
+      <div class="tab-content active" id="announces">
           <div class="call-to-action">
             <%= link_to "Ajouter un vélo",
             new_user_bike_path(current_user),
-            class: "btn btn-small btn-treehouse" %>
+            class: "btn btn-small btn-danger" %>
           </div>
           <% @user.bikes.each do |bike| %>
             <ul class="list-unstyled">
@@ -47,12 +87,10 @@
               <% end %>
             </ul>
       </div>
-
       <div class="tab-content hidden" id="bookings">
         <p>Contact me if you want.</p>
       </div>
-
-    </div>
+    </div> -->
 
 
 
