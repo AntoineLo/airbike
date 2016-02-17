@@ -3,7 +3,9 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :new]
 
   def index
-    params
+    @location = params[:location]
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
     @bikes = Bike.all
   end
 
