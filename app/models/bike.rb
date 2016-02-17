@@ -11,7 +11,11 @@ class Bike < ActiveRecord::Base
   validates :kind, inclusion: { in: %w(VTT ville tandem),
     message: "%{value} is not a valid type" }
 
-  geocoded_by :address
+  geocoded_by :full_address
   after_validation :geocode, if: :address_changed?
+
+  def full_address
+    [address, zip, city].compact.join(', ')
+  end
 
 end
