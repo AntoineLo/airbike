@@ -6,13 +6,20 @@
 }
 
 #content-bike {
-  background-color: #ffedcc ;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E86100;
   height: 100vh ;
+  padding-top: 40px;
+  padding-left : 70px;
 }
 
 #booking-bike {
-  background-color: #fff6e5;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E86100;
   height: 100vh;
+  padding-top: 20px;
 }
 
 #photo-bike {
@@ -26,7 +33,10 @@ margin-bottom : 50px;
 .return {
   margin: 30px;
 }
+.drop-shadow {
+  box-shadow: 2px 2px 2px #E86100;
+}
 
 .colored {
-  background-color: #ffd27f;
+  background-color: #fafafa
 }

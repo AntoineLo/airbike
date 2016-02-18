@@ -3,7 +3,7 @@ class Bike < ActiveRecord::Base
   has_many :bookings
   has_many :announces
 
-  has_attachments :photos, maximum: 1
+  has_attachments :photos, maximum: 3
 
   validates :address, presence: true
   validates :description, presence: true, length: { maximum: 50 }
