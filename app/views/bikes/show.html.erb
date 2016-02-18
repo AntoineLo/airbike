@@ -34,8 +34,8 @@
                 <hr>
               </ul>
               <ul class="list-inline">
-                <li><strong>City : </strong></li>
-                <li><p><%= @bike.city %></p></li>
+                <li><strong>Address : </strong></li>
+                <li><p><%= @bike.address %></p></li>
                 <hr>
               </ul>
               <ul class="list-inline">
@@ -51,7 +51,7 @@
                 <li>In : <%= @bike.date_in %></li>
                 <li>Out : <%= @bike.date_out %></li>
               </ul>
-
+            </div>
           <div class="booking col-xs-8 text-center colored" id="booking-bike">
               <H4>Pour quand souhaitez-vous louer ce vélo ?</h4>
 <!--               <div class="container padded"> -->
@@ -66,8 +66,7 @@
                     <%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %>
                   </div>
                   <div class="call-to-action">
-                    <%= f.button :submit, label: 'faire une réservation', class: "btn btn-primary form-control" %>
-                    <% end %>
+                    <%= f.button :submit, label: 'Faire une réservation', class: "btn btn-primary form-control" %>
                   </div>
 
                   <ul class = "list-unstyled">
