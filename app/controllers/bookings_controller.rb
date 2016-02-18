@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.bike = @bike
+    @booking.status = "pending"
     if @booking.save
       redirect_to user_path(current_user)
     else
@@ -23,13 +24,21 @@ class BookingsController < ApplicationController
   # def edit
   # end
 
-  # def update
-  # end
+  def update
+    @booking = Booking.find(params[:id])
+    if params[:commit] == "Confirm"
+      @booking.status = "confirmed"
+    elsif params[:commit] == "Reject"
+      @booking.status = "rejected"
+    end
+    @booking.save
+    redirect_to :back
+  end
 
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to :back
+    redirect_to user_path(current_user)
   end
 
   private

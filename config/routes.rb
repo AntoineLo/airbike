@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :bookings, only: [:destroy]
+  resources :bookings, only: [:destroy, :update]
   resources :bikes, only: [:new, :create, :edit, :update]
   resources :users, only: [:show]
 

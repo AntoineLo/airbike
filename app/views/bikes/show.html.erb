@@ -27,15 +27,19 @@
               <h3>Choisissez vos dates </h3>
 <!--               <div class="container padded"> -->
                 <div class="form-inline text-center">
-                 <%= simple_form_for [@bike, @booking] do |f| %>
-                   <%= f.error_notification %>
-                   <ul class = "list-unstyled">
-                     <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
-                     <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
-                   </ul>
-                   </br>
-                   <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
-                 <% end %>
+                  <%= simple_form_for [@bike, @booking] do |f| %>
+                    <%= f.error_notification %>
+                    <ul class="list-unstyled">
+                      <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
+                      <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
+                    </ul>
+                    </br>
+                    <% if @bike.user_id == current_user.id %>
+                      <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control", disabled: true %>
+                    <% else %>
+                      <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
+                    <% end %>
+                  <% end %>
 <!--                 </div> -->
               </div>
           </div>
