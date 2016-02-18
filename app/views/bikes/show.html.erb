@@ -22,7 +22,6 @@
 
       <div class="container-fluid">
         <div class="row">
-<<<<<<< HEAD
           <div class="content col-xs-4 text-justify" id="content-bike">
               <ul class="list-inline">
                 <li><p><strong>Type de vélo : </strong></p></li>
@@ -58,7 +57,7 @@
 <!--               <div class="container padded"> -->
                 <div class="form-inline text-center">
                  <%= simple_form_for [@bike, @booking] do |f| %>
-                   <%= f.error_notification %>
+                  <%= f.error_notification %>
 
                   <div class="begin">
                   <%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %>
@@ -71,14 +70,17 @@
                     <% end %>
                   </div>
 
-                   <ul class = "list-unstyled">
-                     <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
-                     <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
-                   </ul>
-                   </br>
-                   <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
-                 <% end %>
-
+                  <ul class = "list-unstyled">
+                    <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
+                    <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
+                  </ul>
+                  </br>
+                  <% if @bike.user_id == current_user.id %>
+                    <%= f.button :submit, label: 'Faire une réservation', class: "btn btn-danger form-control", disabled: true %>
+                  <% else %>
+                    <%= f.button :submit, label: 'Faire une réservation', class: "btn btn-danger form-control" %>
+                  <% end %>
+                <% end %>
 <!--                 </div> -->
               </div>
           </div>
