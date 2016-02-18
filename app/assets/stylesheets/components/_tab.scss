@@ -1,10 +1,11 @@
 .tabs {
   display: flex;
-  margin-left: auto;
-  padding: 15px 0px 2px 5px
+  margin-top: 10px;
+  // margin-left: auto;
+  // padding: 15px 0px 2px 5px
 }
 .tabs a {
-  color: white;
+  color: #E86100;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -21,20 +22,20 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #f1a066;
+  background: #F7F7FA;
   flex: 0 0 50%;
   text-align: center;
   padding: 5px 0;
 }
-.tab:first-child {
-  border-radius: 10px 0 0 0;
-}
-.tab:last-child {
-  border-radius: 0 10px 0 0;
-}
+// .tab:first-child {
+//   border-radius: 10px 0 0 0;
+// }
+// .tab:last-child {
+//   border-radius: 0 10px 0 0;
+// }
 .tab.active {
-  background: #e86100;
-  color: white;
+  background: #E86100;
+  color: #F7F7FA;
 }
 
 .call-to-action {
