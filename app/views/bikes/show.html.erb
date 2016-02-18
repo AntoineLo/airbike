@@ -1,101 +1,71 @@
 <div class="container-fluid">
   <div class="row">
-
-      <div class="return">
-        <%= link_to "retour", :back, :class => 'btn btn-return' %>
+    <div class="return">
+      <%= link_to "retour", :back, :class => 'btn btn-return' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="bike col-xs-12 col-sm-4 col-sm-offset-4 relative text-center" id = "photo-bike">
+      <% @bike.photos.each do |photo| %>
+        <% if photo.path.nil? %>
+          <img src="http://placehold.it/300x200" alt="">
+        <% else %>
+            <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, :class => 'drop-shadow' %>
+            <% end %>
+      <% end %>
+      <div class="absolute price text-center">
+        <h4><%= @bike.price %>€</h4>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="content col-xs-4 text-justify" id="content-bike">
+      <ul class="list-inline">
+        <li><p><strong>Type de vélo : </strong></p></li>
+        <li><p><%= @bike.kind %></p></li>
+        <hr>
+      </ul>
+      <ul class="list-inline">
+        <li><strong>Description : </strong></li>
+        <li><p><%= @bike.description %></p></li>
+        <hr>
+      </ul>
+      <ul class="list-inline">
+        <li><strong>Address : </strong></li>
+        <li><p><%= @bike.address %></p></li>
+        <hr>
+      </ul>
+      <ul class="list-inline">
+        <li><strong>Siège bébé <i class="fa fa-child"></i>   ? </strong></li>
+        <li><p><%= @bike.baby_seat%></p></li>
+        <hr>
+      </ul>
+      <ul class="list-inline">
+        <li><strong>Casque <i class="fa fa-heartbeat"></i>   ? </strong></li>
+        <li><p><%= @bike.helmet?%></p></li>
+      </ul>
+    </div>
 
-      <div class="bike col-xs-12 text-center" id = "photo-bike">
-        <div class="col-xs-12 col-sm-4 col-sm-offset-4 relative">
-          <% @bike.photos.each do |photo| %>
-            <% if photo.path.nil? %>
-              <img src="http://placehold.it/300x200" alt="">
-            <% else %>
-                <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, :class => 'drop-shadow' %>
-                <% end %>
-          <% end %>
-          <div class="absolute price text-center">
-            <h4><%= @bike.price %>€</h4>
+    <div class="booking col-xs-8 text-center colored" id="booking-bike">
+      <h4>Ce vélo est disponible du <strong><%= @bike.date_in %></strong> au <strong><%= @bike.date_out %></strong> </h4>
+      <h4>Pour quelle période souhaitez-vous le louer ?</h4>
+      <div class="form-inline text-center">
+        <%= simple_form_for [@bike, @booking] do |f| %>
+          <%= f.error_notification %>
+          <div class="begin">
+          <%= f.input :date_in, as: :string, label: false, input_html: { class: "form-control datepick" }, placeholder: "Pick-up date", name: "start_date" %>
           </div>
-        </div>
-      </div>
 
-      <div class="container-fluid">
-        <div class="row">
-
-
-      <div class="content col-xs-4 text-justify" id="content-bike">
-
-          <div class="content col-xs-4 text-justify" id="content-bike">
-
-              <ul class="list-inline">
-                <li><p><strong>Type de vélo : </strong></p></li>
-                <li><p><%= @bike.kind %></p></li>
-                <hr>
-              </ul>
-              <ul class="list-inline">
-                <li><strong>Description : </strong></li>
-                <li><p><%= @bike.description %></p></li>
-                <hr>
-              </ul>
-              <ul class="list-inline">
-
-                <li><strong>City : </strong></li>
-
-                <li><strong>Address : </strong></li>
-
-                <li><p><%= @bike.address %></p></li>
-                <hr>
-              </ul>
-              <ul class="list-inline">
-                <li><strong>Siège bébé <i class="fa fa-child"></i>   ? </strong></li>
-                <li><p><%= @bike.baby_seat%></p></li>
-                <hr>
-              </ul>
-              <ul class="list-inline">
-                <li><strong>Casque <i class="fa fa-heartbeat"></i>   ? </strong></li>
-                <li><p><%= @bike.helmet?%></p></li>
-              </ul>
-
-              <ul>
-                <li>In : <%= @bike.date_in %></li>
-                <li>Out : <%= @bike.date_out %></li>
-              </ul>
-
-        </div>
-
-          <div class="booking col-xs-8 text-center colored" id="booking-bike">
-              <h4>Ce vélo est disponible du <strong><%= @bike.date_in %></strong> au <strong><%= @bike.date_out %></strong> </H4>
-              <H4>Pour quelle période souhaitez-vous le louer ?</h4>
-<!--               <div class="container padded"> -->
-                <div class="form-inline text-center">
-                   <%= simple_form_for [@bike, @booking] do |f| %>
-                   <%= f.error_notification %>
-
-
-                  <div class="begin">
-                  <%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %>
-                  </div>
-                  <div class="end">
-                    <%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %>
-                  </div>
-                  <div class="call-to-action">
-
-                    <%= f.button :submit, label: 'faire une réservation', class: "btn btn-primary form-control" %>
-                  </div>
-                 <% end %>
-                </div>
-
-
-
-
-<!--                 </div> -->
-              </div>
+          <div class="end">
+            <%= f.input :date_out, as: :string, label: false, input_html: { class: "form-control datepick" }, placeholder: "Return date", name: "date_end" %>
+          </div>
+          <div class="call-to-action">
+            <%= f.button :submit, 'Book now', class: "btn btn-primary form-control" %>
 
           </div>
-        </div>
+        <% end %>
       </div>
-
+    </div>
   </div>
 </div>
 

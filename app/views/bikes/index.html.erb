@@ -22,7 +22,7 @@
                           <% else %>
                             <div class="picture">
                             <h5><span><%= bike.price %> €</span></h5>
-                              <%= cl_image_tag photo.path, width: 250, height: 200, class: "img-fluid pic", crop: :fill %>
+                              <%= cl_image_tag photo.path, class: "img-fluid pic", crop: :fill %>
                             </div>
                           <% end %>
                         <% end %>
