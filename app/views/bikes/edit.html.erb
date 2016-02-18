@@ -1,10 +1,14 @@
 <%= simple_form_for [current_user, @bike] do |form| %>
   <%= form.error_notification %>
-  <%= form.input :kind, collection: %w(VTT ville tandem) %>
-  <%= form.input :description %>
-  <%= form.input :address %>
-  <%= form.input :helmet %>
-  <%= form.input :baby_seat %>
-  <%= form.input :photos, as: :attachinary %>
+      <%= form.input :kind, collection: %w(VTT ville tandem) %>
+      <%= form.input :description %>
+      <%= form.input :price %>
+      <%= form.input :date_in, label: "date à laquelle vous voulez rendre votre vélo disponible", input_html: { class: "form-control datepick" }, placeholder: "date de début", name: "start_date" %>
+      <%= form.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Date de fin", name: "date_end" %>
+      <%= form.submit "let's go boy", :class => 'btn btn-danger' %>
+      <%= form.input :address, input_html: { id: "user_input_autocomplete_address" } %>
+      <%= form.input :helmet %>
+      <%= form.input :baby_seat %>
+      <%= form.input :photos, as: :attachinary %>
   <%= form.submit %>
 <% end %>

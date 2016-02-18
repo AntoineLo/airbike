@@ -3,8 +3,11 @@ class Bike < ActiveRecord::Base
   has_many :bookings
   has_many :announces
 
-  has_attachments :photos, maximum: 1
+  has_attachments :photos, maximum: 3
 
+  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :less_than => 100}
+  validates :date_in, presence: true
+  validates :date_out, presence: true
   validates :address, presence: true
   validates :description, presence: true, length: { maximum: 50 }
   validates :kind, inclusion: { in: %w(VTT Ville Tandem),

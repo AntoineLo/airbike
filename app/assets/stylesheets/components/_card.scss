@@ -1,9 +1,10 @@
 .card {
-  padding: 10px;
+  // padding: 10px;
   height: 300px;
+  box-shadow: 1px 1px 1px #E86100;
 }
 .card-color {
-  background-color: #EBEBEC;
+  background-color: white;
   padding-top: 1px;
   padding-bottom: 1px;
   border: #F6F6F6 1px solid;
@@ -11,21 +12,29 @@
   margin: 5px;
 }
 .card-photo {
+  padding-top: 10px;
   display: block;
   width: auto;
   max-height: 100%;
   text-align: center;
 }
+.card-photo >img {
+  width :100%
+}
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 10px;
+  padding-right: 4px;
 }
 .card-footer-avatar {
   flex: 0 0 20%;
+  padding-right: 10px;
 }
 .card-footer-text {
   flex: 1 1 auto;
+  padding-left: 10px;
 }
 .card-footer-text > h5 {
   color: #3D3D3A;
@@ -55,3 +64,7 @@
 #design-date {
   padding-left: 15px;
 }
+.cards {
+  margin-top : 20px;
+}
+
