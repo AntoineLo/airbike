@@ -7,10 +7,6 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
 
-  def send_welcome_email
-    UserMailer.welcome(self).deliver_now
-  end
-
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -32,6 +28,13 @@ class User < ActiveRecord::Base
   # to be able to upload picture if user not logging with Facebook
 
   validates :email, uniqueness: true, presence: true
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
+
 end
 
 
