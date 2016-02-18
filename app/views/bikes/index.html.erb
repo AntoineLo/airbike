@@ -10,7 +10,7 @@
                   <h4 class="text-center">Sorry, there is no bike available in your area.</h4>
                 <% end %>
                 <% @bikes.each do |bike| %>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-4">
                   <%= link_to bike_path(bike) do %>
                     <div class="card card-color">
                       <div class="card-photo">
@@ -24,8 +24,12 @@
                       </div>
                       <div class="card-footer">
                         <div class="card-footer-text">
+<!--                           <ul class ="list-inline list-unstyled">
+                            <li>type :</li>
+                            <li><%= bike.kind %></li>
+                          </ul> -->
                           <h5><%= bike.description %></h5>
-                          <p><%= bike.kind %></p><%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
+                          <%# User.find(bike.user_id).rating * "<i class='fa fa-star'></i>" %>
                         </div>
                         <div class="card-footer-avatar">
                           <% if bike.user.picture.nil? %>
