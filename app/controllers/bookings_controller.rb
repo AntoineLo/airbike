@@ -15,9 +15,11 @@ class BookingsController < ApplicationController
     @booking.bike = @bike
     if !date_check
       @booking.save
+      flash[:notice] = "Booking successfully created"
       redirect_to user_path(current_user)
     else
       render "bikes/show"
+      flash[:alert] = "Date not matching ! Please try again"
     end
   end
 
@@ -33,14 +35,14 @@ class BookingsController < ApplicationController
     redirect_to :back
   end
 
+  def date_check
+    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out)
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:date_in, :date_out, :status)
-  end
-
-  def date_check
-    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out)
   end
 
   # def set_user
