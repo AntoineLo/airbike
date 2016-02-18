@@ -22,8 +22,8 @@
 
       <div class="container-fluid">
         <div class="row">
-<<<<<<< HEAD
-          <div class="content col-xs-4 text-justify" id="content-bike">
+
+      <div class="content col-xs-4 text-justify" id="content-bike">
               <ul class="list-inline">
                 <li><p><strong>Type de vélo : </strong></p></li>
                 <li><p><%= @bike.kind %></p></li>
@@ -36,7 +36,7 @@
               </ul>
               <ul class="list-inline">
                 <li><strong>City : </strong></li>
-                <li><p><%= @bike.city %></p></li>
+                <li><p><%= @bike.address %></p></li>
                 <hr>
               </ul>
               <ul class="list-inline">
@@ -52,12 +52,12 @@
                 <li>In : <%= @bike.date_in %></li>
                 <li>Out : <%= @bike.date_out %></li>
               </ul>
-
+        </div>
           <div class="booking col-xs-8 text-center colored" id="booking-bike">
               <H4>Pour quand souhaitez-vous louer ce vélo ?</h4>
 <!--               <div class="container padded"> -->
                 <div class="form-inline text-center">
-                 <%= simple_form_for [@bike, @booking] do |f| %>
+                   <%= simple_form_for [@bike, @booking] do |f| %>
                    <%= f.error_notification %>
 
                   <div class="begin">
@@ -68,7 +68,6 @@
                   </div>
                   <div class="call-to-action">
                     <%= f.button :submit, label: 'faire une réservation', class: "btn btn-primary form-control" %>
-                    <% end %>
                   </div>
 
                    <ul class = "list-unstyled">
@@ -78,9 +77,7 @@
                    </br>
                    <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
                  <% end %>
-
-<!--                 </div> -->
-              </div>
+                </div>
           </div>
         </div>
       </div>
