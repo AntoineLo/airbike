@@ -52,6 +52,47 @@
                   </ul>
             </div>
             <div class="tab-content hidden" id="bookings">
+
+              <% @asked_bookings.each do |booking| %>
+                <% bike = Bike.find(booking.bike_id) %>
+                <ul class="list-unstyled product">
+                  <li class="user-pic">
+                    <% if current_user.picture.nil? %>
+                      <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
+                    <% else %>
+                      <%= image_tag current_user.picture, class: "avatar-large" %>
+                    <% end %>
+                  </li>
+                  <li class="product-pic">
+                    <% bike.photos.each do |photo| %>
+                       <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                    <% end %>
+                  </li>
+                  <li class='product-body'>
+                    <h3><%= bike.kind %></h3>
+                    <p><%= bike.description %></p>
+                    <br>
+                    <p><strong>From :</strong> <%= booking.date_in %></p>
+                    <p><strong>To :</strong> <%= booking.date_out %></p>
+                  </li>
+                  <li class="status">
+                    <% if booking.status == "confirmed" %>
+                      <p class="btn btn-primary">Confirmed</p>
+                    <% elsif booking.status == "rejected" %>
+                      <p class="btn btn-danger">Rejected</p>
+                    <% else %>
+                      <%= form_for booking do |f| %>
+                      <%= f.submit "Confirm", class: "btn btn-success", method: :patch %>
+                      <% end %>
+                      <%= form_for booking do |f| %>
+                      <%= f.submit "Reject", class: "btn btn-danger", method: :patch %>
+                      <% end %>
+                    <% end %>
+                  </li>
+                </ul>
+              <% end %>
+
+
               <% @user.bookings.each do |booking| %>
                 <ul class="list-unstyled product">
                   <li class="user-pic">
@@ -70,10 +111,17 @@
                     <h3><%= booking.bike.kind %></h3>
                     <p><%= booking.bike.description %></p>
                     <br>
-                    <p><strong>From :</strong> <%= booking.date_in %>  <strong>To :</strong> <%= booking.date_out %></p>
+                    <p><strong>From :</strong> <%= booking.date_in %></p>
+                    <p><strong>To :</strong> <%= booking.date_out %></p>
                   </li>
                   <li class="status">
-                    <p>Status: <%= booking.status %></p>
+                    <% if booking.status == "confirmed" %>
+                      <p class="btn btn-primary">Confirmed</p>
+                    <% elsif booking.status == "rejected" %>
+                      <p class="btn btn-danger">Rejected</p>
+                    <% else %>
+                      <p class="btn btn-warning">Pending</p>
+                    <% end %>
                   </li>
                 </ul>
               <% end %>
@@ -85,8 +133,3 @@
 
   </div> <!-- end of row -->
 </div> <!-- end of main-wrapper -->
-
-
-
-
-

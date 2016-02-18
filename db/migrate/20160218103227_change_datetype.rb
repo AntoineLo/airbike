@@ -6,8 +6,8 @@ class ChangeDatetype < ActiveRecord::Migration
     remove_column :bikes, :date_out
     add_column :bikes, :date_out , :date
 
-    Bike.find_each do |bike|
-      bike.update(date_in: Date.today, date_out: Date.today + 10)
-    end
+    # Bike.find_each do |bike|
+    #   bike.update(date_in: Date.today, date_out: Date.today + 10)
+    # end
   end
 end
