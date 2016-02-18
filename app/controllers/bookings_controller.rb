@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
     @bike = Bike.find(params[:bike_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    # binding.pry
     @booking.bike = @bike
     if @booking.save
       redirect_to user_path(current_user)
