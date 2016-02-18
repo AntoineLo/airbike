@@ -17,15 +17,24 @@
   padding-left: 0px;
 }
 
+#profile > ul{
+  color: #F3BD97;
+  font-size: 15px;
+}
 #content {
   padding-right: 0px;
   padding-left: 0px;
 }
-
 .wrapper {
-  background-color: #F5F5blueF5;
+  background-color: #F5F5F5;
 }
-
 #main-avatar{
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+}
+.product {
+  border-bottom: dotted #F5F5F5;
+}
+.pencil{
+  color : $orange;
+  font-size: 24px;
 }

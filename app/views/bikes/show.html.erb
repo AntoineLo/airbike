@@ -55,11 +55,13 @@
           <div class="begin">
           <%= f.input :date_in, as: :string, label: false, input_html: { class: "form-control datepick" }, placeholder: "Pick-up date", name: "start_date" %>
           </div>
+
           <div class="end">
             <%= f.input :date_out, as: :string, label: false, input_html: { class: "form-control datepick" }, placeholder: "Return date", name: "date_end" %>
           </div>
           <div class="call-to-action">
             <%= f.button :submit, 'Book now', class: "btn btn-primary form-control" %>
+
           </div>
         <% end %>
       </div>
