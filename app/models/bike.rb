@@ -5,6 +5,7 @@ class Bike < ActiveRecord::Base
 
   has_attachments :photos, maximum: 3
 
+  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :less_than => 100}
   validates :address, presence: true
   validates :description, presence: true, length: { maximum: 50 }
   validates :city, presence: true

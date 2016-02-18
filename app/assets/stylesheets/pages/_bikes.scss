@@ -40,3 +40,28 @@ margin-bottom : 50px;
 .colored {
   background-color: #fafafa
 }
+
+.main {
+  background-color : #fafafa
+}
+.picture {
+  position: relative;
+   width: 100%; /* for IE 6 */
+}
+.picture > h5 {
+  position: absolute;
+   top: 70px;
+   left: 0;
+   width: 100%;
+   color : white
+}
+h5 span {
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(232, 97, 0, 0.7);
+   padding: 10px;
+   border-radius: 5px;
+}
+

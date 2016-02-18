@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="page-content">
-    <div class="container-fluid">
+    <div class="container-fluid main">
       <div class="row">
         <div class="col-xs-12 col-sm-8">
           <div class="cards">
@@ -18,7 +18,10 @@
                           <% if photo.path.nil? %>
                             <img src="http://placehold.it/300x200" alt="" class="img-fluid">
                           <% else %>
-                            <%= cl_image_tag photo.path, width: 250, height: 200, class: "img-fluid", crop: :fill %>
+                            <div class="picture">
+                            <h5><span><%= bike.price %> €</span></h5>
+                              <%= cl_image_tag photo.path, width: 250, height: 200, class: "img-fluid", crop: :fill %>
+                            </div>
                           <% end %>
                         <% end %>
                       </div>

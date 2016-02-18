@@ -4,7 +4,7 @@
   box-shadow: 1px 1px 1px #E86100;
 }
 .card-color {
-  background-color: #fafafa;
+  background-color: white;
   padding-top: 1px;
   padding-bottom: 1px;
   border: #F6F6F6 1px solid;
@@ -25,6 +25,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 10px;
+  padding-right: 4px;
 }
 .card-footer-avatar {
   flex: 0 0 20%;
