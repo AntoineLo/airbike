@@ -6,6 +6,7 @@
       </div>
 
       <div class="bike col-xs-12 text-center" id = "photo-bike">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4 relative">
           <% @bike.photos.each do |photo| %>
             <% if photo.path.nil? %>
               <img src="http://placehold.it/300x200" alt="">
@@ -13,6 +14,10 @@
                 <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, :class => 'drop-shadow' %>
                 <% end %>
           <% end %>
+          <div class="absolute price text-center">
+            <h4><%= @bike.price %>€</h4>
+          </div>
+        </div>
       </div>
 
       <div class="container-fluid">
@@ -52,7 +57,7 @@
                     <%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %>
                   </div>
                   <div class="call-to-action">
-                    <%= f.button :submit, label: 'faire une réservation', class: "btn btn-success form-control" %>
+                    <%= f.button :submit, label: 'faire une réservation', class: "btn btn-primary form-control" %>
                     <% end %>
                   </div>
 <!--                 </div> -->

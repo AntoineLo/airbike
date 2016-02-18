@@ -64,4 +64,21 @@ h5 span {
    padding: 10px;
    border-radius: 5px;
 }
+.relative{
+ position: relative;
+}
+.absolute{
+  position: absolute;
+  top : - 40px;
+  left : 46px;
+}
+.price {
+    border-radius: 50px;
+    color: white;
+    background: rgba(232, 97, 0, 0.9);
+    padding: 20px;
+    width: 80px;
+    height: 80px;
+    text-align: center
+}
 
