@@ -5,8 +5,6 @@ class CreateBikes < ActiveRecord::Migration
       t.string :type
       t.boolean :helmet
       t.text :picture
-      t.integer :zip
-      t.string :city
       t.boolean :baby_seat
       t.references :user, index: true, foreign_key: true
 

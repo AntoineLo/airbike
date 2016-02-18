@@ -25,6 +25,8 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'faker'
 
+gem "letter_opener", group: :development
+
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-underscore'

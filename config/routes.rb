@@ -1,22 +1,15 @@
 Rails.application.routes.draw do
 
-  # get 'bookings/show'
-  # get 'bookings/new'
-  # get 'bookings/create'
-  # get 'bookings/edit'
-  # get 'bookings/update'
-  # get 'bookings/destroy'
-
   mount Attachinary::Engine => "/attachinary"
 
   root to: 'pages#home'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
-  resources :users, only: [:show] do
-    resources :bookings, only: [:destroy]
-    resources :bikes, only: [:new, :create, :edit, :update]
-  end
+
+  resources :bookings, only: [:destroy]
+  resources :bikes, only: [:new, :create, :edit, :update]
+  resources :users, only: [:show]
 
 
 

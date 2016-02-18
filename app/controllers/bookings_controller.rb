@@ -12,12 +12,15 @@ class BookingsController < ApplicationController
     @bike = Bike.find(params[:bike_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    # binding.pry
     @booking.bike = @bike
-    if @booking.save
+    if !date_check
+      @booking.save
+      flash[:notice] = "Booking successfully created"
+      BookingMailer.booking_confirmation(@booking).deliver_now
       redirect_to user_path(current_user)
     else
-      render :new
+      flash[:alert] = "Date not matching ! Please try again"
+      render "bikes/show"
     end
   end
 
@@ -31,6 +34,13 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to :back
+  end
+
+  def date_check
+    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out) ||
+    (Booking.all.each do |b|
+      (b.date_in < @booking.date_out) || (b.date_out > @booking.date_out)
+    end)
   end
 
   private
