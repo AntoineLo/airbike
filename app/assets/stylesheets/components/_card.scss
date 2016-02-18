@@ -8,7 +8,7 @@
   padding-top: 1px;
   padding-bottom: 1px;
   border: #F6F6F6 1px solid;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: 5px;
 }
 .card-photo {
@@ -17,9 +17,6 @@
   width: auto;
   max-height: 100%;
   text-align: center;
-}
-.card-photo >img {
-  width :100%
 }
 .card-footer {
   display: flex;
