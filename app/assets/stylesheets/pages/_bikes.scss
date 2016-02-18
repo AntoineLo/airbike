@@ -11,7 +11,7 @@
   border-color: #E86100;
   height: 60vh ;
   padding-top: 40px;
-  padding-left : 70px;
+  padding-left : 20px;
 }
 
 #booking-bike {
@@ -44,9 +44,12 @@ margin-bottom : 50px;
 .main {
   background-color : #fafafa
 }
+.pic{
+  border-radius: 4px;
+}
 .picture {
   position: relative;
-   width: 100%; /* for IE 6 */
+  width: 100%; /* for IE 6 */
 }
 .picture > h5 {
   position: absolute;
@@ -80,5 +83,8 @@ h5 span {
     width: 80px;
     height: 80px;
     text-align: center
+}
+.begin {
+  padding : 30px;
 }
 

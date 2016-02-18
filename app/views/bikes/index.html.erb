@@ -7,7 +7,9 @@
             <div class="container-fluid">
               <div class="row">
                 <% if @bikes.first.nil? %>
-                  <h4 class="text-center">Sorry, there is no bike available in your area.</h4>
+                  <h1 class="text-center"><i class="fa fa-frown-o"></i></h1>
+                  <h2 class="text-center">Sorry, there is no bike available in your area.</h2>
+                  <p class="text-center">Try with some place that makes sens</p>
                 <% end %>
                 <% @bikes.each do |bike| %>
                 <div class="col-xs-12 col-md-4">
@@ -20,7 +22,7 @@
                           <% else %>
                             <div class="picture">
                             <h5><span><%= bike.price %> €</span></h5>
-                              <%= cl_image_tag photo.path, width: 250, height: 200, class: "img-fluid", crop: :fill %>
+                              <%= cl_image_tag photo.path, width: 250, height: 200, class: "img-fluid pic", crop: :fill %>
                             </div>
                           <% end %>
                         <% end %>
