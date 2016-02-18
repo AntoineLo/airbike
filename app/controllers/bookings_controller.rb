@@ -36,7 +36,10 @@ class BookingsController < ApplicationController
   end
 
   def date_check
-    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out)
+    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out) ||
+    (Booking.all.each do |b|
+      (b.date_in < @booking.date_out) || (b.date_out > @booking.date_out)
+    end)
   end
 
   private
