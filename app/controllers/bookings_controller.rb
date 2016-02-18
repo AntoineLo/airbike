@@ -18,8 +18,8 @@ class BookingsController < ApplicationController
       flash[:notice] = "Booking successfully created"
       redirect_to user_path(current_user)
     else
-      render "bikes/show"
       flash[:alert] = "Date not matching ! Please try again"
+      render "bikes/show"
     end
   end
 
