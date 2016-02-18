@@ -10,7 +10,7 @@ class Bike < ActiveRecord::Base
   validates :date_out, presence: true
   validates :address, presence: true
   validates :description, presence: true, length: { maximum: 50 }
-  validates :kind, inclusion: { in: %w(VTT ville tandem),
+  validates :kind, inclusion: { in: %w(VTT Ville Tandem),
     message: "%{value} is not a valid type" }
 
   geocoded_by :address
