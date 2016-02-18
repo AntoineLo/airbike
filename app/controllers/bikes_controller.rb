@@ -1,11 +1,10 @@
 class BikesController < ApplicationController
-  before_action :find_user, only: [:new, :create]
   skip_before_action :authenticate_user!, only: [:index, :new]
 
   def index
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    @bikes = Bike.near(params[:location], 1000)
+    @bikes = Bike.near(params[:location], 15)
     @markers = Gmaps4rails.build_markers(@bikes) do |bike, marker|
       marker.lat bike.latitude
       marker.lng bike.longitude
@@ -23,9 +22,9 @@ class BikesController < ApplicationController
   end
 
   def create
-    @bike = @user.bikes.new(bike_params)
+    @bike = current_user.bikes.new(bike_params)
     if @bike.save
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -57,7 +56,9 @@ class BikesController < ApplicationController
   def bike_params
     params.require(:bike).permit(:address, :kind, :helmet, :picture, :zip, :description, :city, :baby_seat, :date_in, :date_out, photos: [])
   end
+
   def find_user
     @user = User.find(params[:user_id])
+    params.require(:bike).permit(:address, :kind, :helmet, :picture, :description, :baby_seat, photos: [])
   end
 end
