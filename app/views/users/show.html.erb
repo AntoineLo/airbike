@@ -28,7 +28,7 @@
             <div class="tab-content active" id="announces">
                 <div class="call-to-action">
                   <%= link_to "Ajouter un vélo",
-                  new_user_bike_path(current_user),
+                  new_bike_path(current_user),
                   class: "btn btn-small btn-danger" %>
                 </div>
                 <% @user.bikes.each do |bike| %>
@@ -41,7 +41,7 @@
                       <h3><%= bike.kind %></h3>
                       <p><%= bike.description %></p>
                       </div>
-                      <%= link_to edit_user_bike_path(current_user, bike) do %>
+                      <%= link_to edit_bike_path(current_user, bike) do %>
                       <i class="fa fa-pencil green"></i>
                       <% end %>
                       </li>
