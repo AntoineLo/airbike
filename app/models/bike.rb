@@ -5,6 +5,8 @@ class Bike < ActiveRecord::Base
 
   has_attachments :photos, maximum: 1
 
+  validates :date_in, presence: true
+  validates :date_out, presence: true
   validates :address, presence: true
   validates :description, presence: true, length: { maximum: 50 }
   validates :city, presence: true
