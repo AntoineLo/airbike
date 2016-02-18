@@ -8,9 +8,28 @@
 
 Bike.destroy_all
 
-Bike.create(description: "VTT de compet"
+Bike.create(description: "VTT de compet",
             address: "Rue de la convention, 75010, Paris",
             helmet: true,
             kind: "VTT",
             user_id: 1)
-Bike.create(description: "Velo hollandais", address: "Rue paradis, 40000, Nantes", helmet: false, kind: "ville", user_id: 1)
+Bike.create(description: "Velo hollandais",
+            address: "Rue paradis, 40000, Nantes",
+            helmet: false,
+            kind: "Ville",
+            user_id: 1)
+Bike.create(description: "Tandem",
+            address: "Rue Beaurepaire, 75010, Paris",
+            helmet: true,
+            kind: "Tandem",
+            user_id: 1)
+Bike.create(description: "VTT de montagne",
+            address: "Courchevel",
+            helmet: false,
+            kind: "VTT",
+            user_id: 1)
+Bike.create(description: "Vélo de ville New-Yorkais",
+            address: "54th Street, Manhattan, New-York City",
+            helmet: false,
+            kind: "Ville",
+            user_id: 1)

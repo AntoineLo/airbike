@@ -1,45 +1,85 @@
 <div class="container-fluid">
-  <div class="row colored">
+  <div class="row">
 
       <div class="return">
-        <%= link_to "Back to results", :back, :class => 'btn btn-treehouse' %>
+        <%= link_to "retour", :back, :class => 'btn btn-return' %>
       </div>
 
       <div class="bike col-xs-12 text-center" id = "photo-bike">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4 relative">
           <% @bike.photos.each do |photo| %>
             <% if photo.path.nil? %>
               <img src="http://placehold.it/300x200" alt="">
             <% else %>
-              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, :class => 'avatar-other' %>
-            <% end %>
+                <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill, :class => 'drop-shadow' %>
+                <% end %>
           <% end %>
+          <div class="absolute price text-center">
+            <h4><%= @bike.price %>€</h4>
+          </div>
+        </div>
       </div>
 
       <div class="container-fluid">
         <div class="row">
-          <div class="content col-xs-6 text-center" id="content-bike">
-              <h3>type de vélo : </h3>
-              <p><%= @bike.kind %></p>
-              <h3>Description : </h3>
-              <p><%= @bike.description %>
-              <h3>Date :</h3>
-              <p>In : <%= @bike.date_in %></p>
-              <p>Out : <%= @bike.date_out %></p>
-          </div>
-          <div class="booking col-xs-6 text-center" id="booking-bike">
-              <h3>Choisissez vos dates </h3>
+          <div class="content col-xs-4 text-justify" id="content-bike">
+              <ul class="list-inline">
+                <li><p><strong>Type de vélo : </strong></p></li>
+                <li><p><%= @bike.kind %></p></li>
+                <hr>
+              </ul>
+              <ul class="list-inline">
+                <li><strong>Description : </strong></li>
+                <li><p><%= @bike.description %></p></li>
+                <hr>
+              </ul>
+              <ul class="list-inline">
+                <li><strong>Address : </strong></li>
+                <li><p><%= @bike.address %></p></li>
+                <hr>
+              </ul>
+              <ul class="list-inline">
+                <li><strong>Siège bébé <i class="fa fa-child"></i>   ? </strong></li>
+                <li><p><%= @bike.baby_seat%></p></li>
+                <hr>
+              </ul>
+              <ul class="list-inline">
+                <li><strong>Casque <i class="fa fa-heartbeat"></i>   ? </strong></li>
+                <li><p><%= @bike.helmet?%></p></li>
+              </ul>
+              <ul>
+                <li>In : <%= @bike.date_in %></li>
+                <li>Out : <%= @bike.date_out %></li>
+              </ul>
+            </div>
+          <div class="booking col-xs-8 text-center colored" id="booking-bike">
+              <H4>Pour quand souhaitez-vous louer ce vélo ?</h4>
 <!--               <div class="container padded"> -->
                 <div class="form-inline text-center">
                  <%= simple_form_for [@bike, @booking] do |f| %>
-                   <%= f.error_notification %>
-                   <ul class = "list-unstyled">
-                     <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
-                     <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
-                   </ul>
-                   </br>
-                   <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
-                 <% end %>
+                  <%= f.error_notification %>
 
+                  <div class="begin">
+                  <%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %>
+                  </div>
+                  <div class="end">
+                    <%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %>
+                  </div>
+                  <div class="call-to-action">
+                    <%= f.button :submit, label: 'Faire une réservation', class: "btn btn-primary form-control" %>
+                  </div>
+
+                  <ul class = "list-unstyled">
+                    <li><%= f.input :date_in, label: "date de début de réservation", input_html: { class: "form-control datepick" }, placeholder: "date de fin", name: "start_date" %></li>
+                    <li><%= f.input :date_out, label: 'date de fin', input_html: { class: "form-control datepick" }, placeholder: "Select end date", name: "date_end" %></li>
+                  </ul>
+                  </br>
+                  <% if @bike.user_id == current_user.id %>
+                    <%= f.button :submit, label: 'Faire une réservation', class: "btn btn-danger form-control", disabled: true %>
+                  <% else %>
+                    <%= f.button :submit, label: 'Faire une réservation', class: "btn btn-danger form-control" %>
+                  <% end %>
+                <% end %>
 <!--                 </div> -->
               </div>
           </div>
