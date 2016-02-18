@@ -23,9 +23,12 @@
 }
 .tab {
   background: #F7F7FA;
-  flex: 0 0 50%;
+  flex: 0 0 33%;
   text-align: center;
   padding: 5px 0;
+}
+.tab-content {
+  padding-top: 20px;
 }
 // .tab:first-child {
 //   border-radius: 10px 0 0 0;
