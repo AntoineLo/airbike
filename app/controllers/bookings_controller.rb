@@ -42,8 +42,15 @@ class BookingsController < ApplicationController
 
   def booking_date_check
     booked_for_this_id = Booking.where(bike_id: @bike.id)
-    booked_for_this_id.each do |b|
-      (b.date_in > @booking.date_out) || (b.date_out < @booking.date_out)
+    if booked_for_this_id.empty?
+      return false
+    else
+      booked_for_this_id.each do |b|
+        if ((b.date_in <= @booking.date_out) && (b.date_out >= @booking.date_out)) || ((@booking.date_in >= b.date_in) && (@booking.date_in <= b.date_out))
+          return true
+        end
+      end
+      return false
     end
   end
 
