@@ -13,11 +13,9 @@
                   <%= link_to "Ajouter un vélo",
                   new_bike_path(current_user),
                   class: "btn btn-small btn-warning" %></div></li>
-        </ul>
     </div>
 
     <div id="content" class="col-md-10"> <!-- content -->
-
       <div class="tabs">   <!-- TABS -->
         <a class="tab active" data-target="#announces">
           <p>Mes</p>
@@ -34,62 +32,61 @@
       </div>   <!-- end of TABS -->
 
       <div class="announces-booking"> <!--announces-booking -->
-          <div class="container-fluid text-justify">
-
+        <div class="container-fluid text-justify">
           <div class="container">
             <div class="row">
-              <div class="col-xs-12 col-md-6">
+
+
                 <div class="tab-content active" id="announces">
+<!--                 <div class="col-xs-12 col-md-6"> -->
                     <% @user.bikes.each do |bike| %>
-                      <ul class="list-unstyled">
+
+<!--                       <ul class="list-unstyled"> -->
+                        <% bike.photos.each do |photo| %>
                         <li class="product">
-                          <% bike.photos.each do |photo| %>
-                             <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
-                          <% end %>
-                          <div class='product-body'>
-                          <ul class ="list-unstyled list-inline">
-                            <li><p><strong>From :</strong> <%= bike.date_in %></p></li>
-                            <li><p><strong>To :</strong> <%= bike.date_out %></p></li>
-                          </ul>
-                          <ul class ="list-unstyled list-inline">
-                            <li>Description :</li>
-                            <li><%= bike.description %></li>
-                          </ul>
-                          <ul class ="list-unstyled list-inline">
-                            <li>Type de vélo : </li>
-                            <li><%= bike.kind %></li>
-                          </ul>
-                          </div>
-                          <%= link_to edit_bike_path(current_user, bike) do %>
-                          <h4 class="pencil"><i class="fa fa-pencil "></i></h4>
-                          <% end %>
-                          </li>
+                               <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                            <% end %>
+                            <div class='product-body'>
+                            <ul class ="list-unstyled list-inline">
+                              <li><p><strong>From :</strong> <%= bike.date_in %></p></li>
+                              <li><p><strong>To :</strong> <%= bike.date_out %></p></li>
+                            </ul>
+                            <ul class ="list-unstyled list-inline">
+                              <li>Description :</li>
+                              <li><%= bike.description %></li>
+                            </ul>
+                            <ul class ="list-unstyled list-inline">
+                              <li>Type de vélo : </li>
+                              <li><%= bike.kind %></li>
+                            </ul>
+                            </div>
+                            <%= link_to edit_bike_path(current_user, bike) do %>
+                            <h4 class="pencil"><i class="fa fa-pencil "></i></h4>
+                            <% end %>
+                        </li>
                         <% end %>
-                      </ul>
+<!--                       </ul> -->
                 </div>
-              </div>
-            </div>
-          </div>
+<!--               </div> -->
+<!--            </div>
+          </div> -->
 
 
-
-
-
-            <div class="tab-content hidden" id="incomings">
-
+          <div class="tab-content hidden" id="incomings">
               <% @asked_bookings.each do |booking| %>
                 <% bike = Bike.find(booking.bike_id) %>
                 <ul class="list-unstyled product">
-                  <li class="user-pic">
+                  <li class="product-pic">
+                    <% bike.photos.each do |photo| %>
+                       <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                    <% end %>
+                  </li>
+                  <li class="user-pic text-center">
+                    <p><strong>Propiétaire : </strong></p>
                     <% if current_user.picture.nil? %>
                       <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
                     <% else %>
                       <%= image_tag current_user.picture, class: "avatar-large" %>
-                    <% end %>
-                  </li>
-                  <li class="product-pic">
-                    <% bike.photos.each do |photo| %>
-                       <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
                     <% end %>
                   </li>
                   <li class='product-body'>
@@ -131,25 +128,54 @@
             <div class="tab-content hidden" id="outcomings">
             <% @user.bookings.each do |booking| %>
                   <ul class="list-unstyled product">
-                  <li class="user-pic">
+                  <li class="product-pic">
+                    <% booking.bike.photos.each do |photo| %>
+                       <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                    <% end %>
+                  </li>
+<!--                   <li class="product-pic">
+                  <% booking.bike.photos.each do |photo| %>
+                  <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
+                  <% end %>
+                  </li> -->
+                  <li class="user-pic text-center">
+                    <p><strong>Propiétaire : </strong></p>
+                    <% if booking.bike.user.picture.nil? %>
+                      <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
+                    <% else %>
+                      <%= image_tag booking.bike.user.picture, class: "avatar-large" %>
+                    <% end %>
+                  </li>
+<!--                   <li class="user-pic">
                   <% if booking.bike.user.picture.nil? %>
                   <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
                   <% else %>
                   <%= image_tag booking.bike.user.picture, class: "avatar-large" %>
                   <% end %>
-                  </li>
-                  <li class="product-pic">
-                  <% booking.bike.photos.each do |photo| %>
-                  <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
-                  <% end %>
-                  </li>
+                  </li> -->
                   <li class='product-body'>
+                    <ul class ="list-unstyled list-inline">
+                      <li><p><strong>From :</strong> <%= booking.date_in %></p></li>
+                      <li><p><strong>To :</strong> <%= booking.date_out %></p></li>
+                    </ul class ="list-unstyled list-inline">
+                    <ul class ="list-unstyled list-inline">
+                      <li>Description : </li>
+                      <li><p><%= booking.bike.description %></p></li>
+                    </ul>
+                    <ul class ="list-unstyled list-inline">
+                      <li>Type de vélo : </li>
+                      <li><%= booking.bike.kind %></li>
+                    </ul>
+                      <br>
+                  </li>
+
+<!--                   <li class='product-body'>
                   <h3><%= booking.bike.kind %></h3>
                   <p><%= booking.bike.description %></p>
                   <br>
                   <p><strong>From :</strong> <%= booking.date_in %></p>
                   <p><strong>To :</strong> <%= booking.date_out %></p>
-                  </li>
+                  </li> -->
                   <li class="status">
                   <% if booking.status == "confirmed" %>
                   <p class="btn btn-primary">Confirmed</p>
