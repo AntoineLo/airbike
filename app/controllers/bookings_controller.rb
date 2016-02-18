@@ -13,10 +13,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.bike = @bike
-    if @booking.save
+    if !date_check
+      @booking.save
       redirect_to user_path(current_user)
     else
-      render :new
+      render "bikes/show"
     end
   end
 
@@ -36,6 +37,10 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:date_in, :date_out, :status)
+  end
+
+  def date_check
+    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out)
   end
 
   # def set_user
