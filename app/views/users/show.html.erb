@@ -40,6 +40,9 @@
                       <div class='product-body'>
                       <h3><%= bike.kind %></h3>
                       <p><%= bike.description %></p>
+                      <h3>Date :</h3>
+                      <p>In : <%= bike.date_in %></p>
+                      <p>Out : <%= bike.date_out %></p>
                       </div>
                       <%= link_to edit_bike_path(current_user, bike) do %>
                       <i class="fa fa-pencil green"></i>

@@ -22,6 +22,9 @@
               <p><%= @bike.kind %></p>
               <h3>Description : </h3>
               <p><%= @bike.description %>
+              <h3>Date :</h3>
+              <p>In : <%= @bike.date_in %></p>
+              <p>Out : <%= @bike.date_out %></p>
           </div>
           <div class="booking col-xs-6 text-center" id="booking-bike">
               <h3>Choisissez vos dates </h3>
@@ -36,6 +39,7 @@
                    </br>
                    <%= f.button :submit, label: 'faire une réservation', class: "btn btn-danger form-control" %>
                  <% end %>
+
 <!--                 </div> -->
               </div>
           </div>
