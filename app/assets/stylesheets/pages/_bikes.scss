@@ -6,13 +6,20 @@
 }
 
 #content-bike {
-  background-color: #ffedcc ;
-  height: 100vh ;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E86100;
+  height: 60vh ;
+  padding-top: 40px;
+  padding-left : 20px;
 }
 
 #booking-bike {
-  background-color: #fff6e5;
-  height: 100vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E86100;
+  height: 60vh;
+  padding-top: 20px;
 }
 
 #photo-bike {
@@ -26,7 +33,58 @@ margin-bottom : 50px;
 .return {
   margin: 30px;
 }
+.drop-shadow {
+  box-shadow: 2px 2px 2px #E86100;
+}
 
 .colored {
-  background-color: #ffd27f;
+  background-color: #fafafa
 }
+
+.main {
+  background-color : #fafafa
+}
+.pic{
+  border-radius: 4px;
+}
+.picture {
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+.picture > h5 {
+  position: absolute;
+   top: 70px;
+   left: 0;
+   width: 100%;
+   color : white
+}
+h5 span {
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(232, 97, 0, 0.7);
+   padding: 10px;
+   border-radius: 5px;
+}
+.relative{
+ position: relative;
+}
+.absolute{
+  position: absolute;
+  top : - 40px;
+  left : 46px;
+}
+.price {
+    border-radius: 50px;
+    color: white;
+    background: rgba(232, 97, 0, 0.9);
+    padding: 20px;
+    width: 80px;
+    height: 80px;
+    text-align: center
+}
+.begin {
+  padding : 30px;
+}
+
