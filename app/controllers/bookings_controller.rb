@@ -16,10 +16,11 @@ class BookingsController < ApplicationController
     if !date_check
       @booking.save
       flash[:notice] = "Booking successfully created"
+      BookingMailer.booking_confirmation(@booking).deliver_now
       redirect_to user_path(current_user)
     else
-      render "bikes/show"
       flash[:alert] = "Date not matching ! Please try again"
+      render "bikes/show"
     end
   end
 
