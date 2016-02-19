@@ -4,7 +4,7 @@
       <ul class= "list-unstyled">
         <li id="main-avatar">
           <% if current_user.picture.nil? %>
-            <%= image_tag "http://placehold.it/80x80", class: "avatar-extralarge" %>
+            <%= image_tag 'placeholder_pic.png', class: "avatar-extralarge" %>
           <% else %>
             <%= image_tag current_user.picture, class: "avatar-extralarge " %>
           <% end %>
@@ -73,7 +73,7 @@
                 <div class="user-pic text-center">
                   <p><strong>Demander:</strong></p>
                   <% if booking.user.picture.nil? %>
-                    <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
+                    <%= image_tag 'placeholder_pic.png', class: "avatar-large" %>
                   <% else %>
                     <%= image_tag booking.user.picture, class: "avatar-large" %>
                   <% end %>
@@ -118,7 +118,7 @@
                 <div class="user-pic text-center">
                   <p><strong>Owner:</strong></p>
                   <% if booking.bike.user.picture.nil? %>
-                    <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
+                    <%= image_tag 'placeholder_pic.png', class: "avatar-large" %>
                   <% else %>
                     <%= image_tag booking.bike.user.picture, class: "avatar-large" %>
                   <% end %>
