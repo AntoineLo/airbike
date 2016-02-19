@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def number_of_messages
-    @number_of_messages = Booking.where(status: "pending").count
-    raise
+    @number_of_messages = current_user.bookings
   end
 
 end
