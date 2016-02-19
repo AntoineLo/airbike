@@ -6,3 +6,10 @@
   height: calc(100vh - 70px);
   width: 100%;
 }
+#map > div > div > div {
+  position: fixed;
+}
+.map {
+  position: fixed;
+  right: 0;
+}
