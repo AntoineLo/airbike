@@ -72,10 +72,10 @@
                 <% end %>
                 <div class="user-pic text-center">
                   <p><strong>Owner:</strong></p>
-                  <% if current_user.picture.nil? %>
+                  <% if bike.user.picture.nil? %>
                     <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
                   <% else %>
-                    <%= image_tag current_user.picture, class: "avatar-large" %>
+                    <%= image_tag bike.user.picture, class: "avatar-large" %>
                   <% end %>
                 </div>
                 <div class="product-body">
