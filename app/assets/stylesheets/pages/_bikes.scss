@@ -20,8 +20,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: #E86100;
-  height: 60vh ;
-  padding-top: 40px;
+  padding-top: 10px;
   padding-left : 20px;
 }
 
@@ -80,7 +79,7 @@ h5 span {
 .absolute{
   position: absolute;
   top : - 40px;
-  left : 46px;
+  left : 175px;
 }
 .price {
     border-radius: 50px;
@@ -93,5 +92,17 @@ h5 span {
 }
 .begin {
   padding : 15px;
+}
+.btn-book {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+#bike-details {
+  background-color: #f9f9f9;
+  height : 50vh
+}
+.about  {
+  color: $orange;
+  padding :30px;
 }
 
