@@ -68,7 +68,7 @@ class BikesController < ApplicationController
   private
 
   def bike_params
-    params.require(:bike).permit(:address, :price, :kind, :helmet, :picture, :zip, :description, :city, :baby_seat, :date_in, :date_out, photos: [])
+    params.require(:bike).permit(:address, :price, :kind, :helmet, :picture, :description, :baby_seat, :date_in, :date_out, photos: [])
   end
 
   def find_user
