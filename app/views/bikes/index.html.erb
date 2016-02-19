@@ -52,8 +52,8 @@
             </div>
           </div>
         </div>
-        <div class="hidden-xs col-sm-4 no-padding">
-          <div id="map" class="scroll_fixed"></div>
+        <div class="hidden-xs col-sm-4 no-padding map">
+          <div id="map" style="position: fixed;"></div>
           <% content_for(:after_js) do %>
             <%= javascript_tag do %>
               $(document).on('ready', function() {
