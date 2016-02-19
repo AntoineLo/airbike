@@ -71,11 +71,11 @@
                   <%= cl_image_tag photo.path, width: 180, height: 110, crop: :fill, :class => "product-image" %>
                 <% end %>
                 <div class="user-pic text-center">
-                  <p><strong>Owner:</strong></p>
-                  <% if bike.user.picture.nil? %>
+                  <p><strong>Demander:</strong></p>
+                  <% if booking.user.picture.nil? %>
                     <%= image_tag 'http://placehold.it/50x50', class: "avatar-large" %>
                   <% else %>
-                    <%= image_tag bike.user.picture, class: "avatar-large" %>
+                    <%= image_tag booking.user.picture, class: "avatar-large" %>
                   <% end %>
                 </div>
                 <div class="product-body">
