@@ -7,9 +7,9 @@
             <div class="container-fluid">
               <div class="row">
                 <% if @bikes.first.nil? %>
-                  <h1 class="text-center"><i class="fa fa-frown-o"></i></h1>
-                  <h2 class="text-center">Sorry, there is no bike available in your area.</h2>
-                  <p class="text-center">Try with some place that makes sens</p>
+                  <h2 class="text-center"><i class="fa fa-frown-o"></i></h2>
+                  <h3 class="text-center">Sorry, there is no bike available in your area.</h3>
+                  <p class="text-center">Try with some place that makes sense...</p>
                 <% end %>
                 <% @bikes.each do |bike| %>
                 <div class="col-xs-12 col-md-4">
