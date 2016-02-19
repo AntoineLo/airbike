@@ -55,9 +55,16 @@ class BookingsController < ApplicationController
       return false
     else
       booked_for_this_id.each do |b|
-        if ((b.date_in <= @booking.date_out) && (b.date_out >= @booking.date_out)) || ((@booking.date_in >= b.date_in) && (@booking.date_in <= b.date_out))
+        # if ((b.date_in <= @booking.date_out) && (b.date_out >= @booking.date_out)) || ((@booking.date_in >= b.date_in) && (@booking.date_in <= b.date_out))
+        #   return true
+        # end
+
+        unless ((b.date_in > @booking.date_out) && (b.date_out < @booking.date_in))
           return true
+        else
+          return false
         end
+
       end
       return false
     end
