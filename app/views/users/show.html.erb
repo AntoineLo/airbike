@@ -8,6 +8,10 @@
           <% else %>
             <%= image_tag current_user.picture, class: "avatar-extralarge " %>
           <% end %>
+          <%#= simple_form_for current_user, class: "text-left" do |form| %>
+            <%#= form.input :picture, as: :attachinary %>
+            <%#= form.submit "Change my pic", :class => 'btn btn-primary', method: :patch %>
+          <%# end %>
         </li>
         <li><p><%= @user.first_name %> <%= @user.last_name %></p></li>
         <hr>
