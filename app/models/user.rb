@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  after_create :send_welcome_email
-
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -21,19 +19,12 @@ class User < ActiveRecord::Base
     end
   end
 
-
   has_many :bookings, dependent: :destroy
   has_many :bikes, dependent: :destroy
   # has_attachment :photo ?????
   # to be able to upload picture if user not logging with Facebook
 
   validates :email, uniqueness: true, presence: true
-
-  private
-
-  def send_welcome_email
-    UserMailer.welcome(self).deliver_now
-  end
 
 end
 
