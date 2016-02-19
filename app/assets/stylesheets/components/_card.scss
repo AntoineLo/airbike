@@ -17,7 +17,21 @@
   width: auto;
   max-height: 100%;
   text-align: center;
+  position : relative
 }
+
+.card-photo-background {
+  padding-top: 10px;
+  display: block;
+  width: auto;
+  height: 100px;
+  text-align: center;
+  background-position : center center;
+  background-size: cover;
+}
+
+
+
 .card-footer {
   display: flex;
   justify-content: space-between;
