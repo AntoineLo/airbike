@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.bike = @bike
     @booking.status = "pending"
-    if date_check == false && booking_date_check == false
+    if date_check && booking_date_check == false
       @booking.save
       flash[:notice] = "Booking successfully created"
       # BookingMailer.booking_confirmation(@booking).deliver_now
@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
   end
 
   def date_check
-    (@booking.date_in < @bike.date_in) || (@booking.date_out > @bike.date_out)
+    (@bike.date_in <= @booking.date_in) && (@bike.date_out >= @booking.date_out)
   end
 
   def booking_date_check
@@ -55,7 +55,10 @@ class BookingsController < ApplicationController
       return false
     else
       booked_for_this_id.each do |b|
-        if ((b.date_in <= @booking.date_out) && (b.date_out >= @booking.date_out)) || ((@booking.date_in >= b.date_in) && (@booking.date_in <= b.date_out))
+        # if ((b.date_in <= @booking.date_out) && (b.date_out >= @booking.date_out)) || ((@booking.date_in >= b.date_in) && (@booking.date_in <= b.date_out))
+        #   return true
+        # end
+        unless ((b.date_in > @booking.date_out) || (b.date_out < @booking.date_in))
           return true
         end
       end
