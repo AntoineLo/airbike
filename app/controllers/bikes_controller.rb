@@ -6,9 +6,9 @@ class BikesController < ApplicationController
     @end_date = params[:end_date]
 
     if params[:start_date].present? && params[:location].present?
-      @bikes = Bike.where("('#{@start_date}' <= date_in AND '#{@end_date}' >= date_in AND '#{@end_date}' <= date_out)
-                        OR ('#{@start_date}' >= date_in AND '#{@start_date}' <= date_out AND '#{@end_date}' >= date_out)
-                        OR ('#{@start_date}' >= date_in AND '#{@end_date}' <= date_out)")
+      @bikes = Bike.where("(date_in >= '#{@start_date}' AND date_in <= '#{@end_date}' AND date_out >= '#{@end_date}')
+                        OR (date_in <= '#{@start_date}' AND date_out >= '#{@start_date}' AND date_out <= '#{@end_date}')
+                        OR (date_in <= '#{@start_date}' AND date_out >= '#{@end_date}')")
                    .near(params[:location], 15)
     elsif params[:location].present?
       @bikes = Bike.near(params[:location], 15)
@@ -77,9 +77,9 @@ class BikesController < ApplicationController
   end
 
   def search_by_date
-    Bike.where("('#{@start_date}' <= date_in AND '#{@end_date}' >= date_in AND '#{@end_date}' <= date_out)
-             OR ('#{@start_date}' >= date_in AND '#{@start_date}' <= date_out AND '#{@end_date}' >= date_out)
-             OR ('#{@start_date}' >= date_in AND '#{@end_date}' <= date_out)")
+    Bike.where("(date_in >= '#{@start_date}' AND date_in <= '#{@end_date}' AND date_out >= '#{@end_date}')
+             OR (date_in <= '#{@start_date}' AND date_out >= '#{@start_date}' AND date_out <= '#{@end_date}')
+             OR (date_in <= '#{@start_date}' AND date_out >= '#{@end_date}')")
   end
 
 end
