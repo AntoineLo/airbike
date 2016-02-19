@@ -6,8 +6,10 @@ class BikesController < ApplicationController
     @end_date = params[:end_date]
 
     if params[:start_date].present? && params[:location].present?
-      @bikes = Bike.near(params[:location], 15)
-                   .where("(date_in <= '#{@end_date}' AND date_in >= '#{@start_date}') OR (date_out <= '#{@end_date}' AND date_out >= '#{@start_date}')")
+      @bikes = Bike.where("('#{@start_date}' <= date_in AND '#{@end_date}' >= date_in AND '#{@end_date}' <= date_out)
+                        OR ('#{@start_date}' >= date_in AND '#{@start_date}' <= date_out AND '#{@end_date}' >= date_out)
+                        OR ('#{@start_date}' >= date_in AND '#{@end_date}' <= date_out)")
+                   .near(params[:location], 15)
     elsif params[:location].present?
       @bikes = Bike.near(params[:location], 15)
     elsif params[:start_date].present?
@@ -16,11 +18,11 @@ class BikesController < ApplicationController
       @bikes = Bike.all
     end
 
-
     @markers = Gmaps4rails.build_markers(@bikes) do |bike, marker|
       marker.lat bike.latitude
       marker.lng bike.longitude
     end
+    @markers.reject! { |marker| marker[:lat] == nil }
   end
 
   def show
@@ -75,7 +77,9 @@ class BikesController < ApplicationController
   end
 
   def search_by_date
-    Bike.where("(date_in <= '#{@end_date}' AND date_in >= '#{@start_date}') OR (date_out <= '#{@end_date}' AND date_out >= '#{@start_date}')")
+    Bike.where("('#{@start_date}' <= date_in AND '#{@end_date}' >= date_in AND '#{@end_date}' <= date_out)
+             OR ('#{@start_date}' >= date_in AND '#{@start_date}' <= date_out AND '#{@end_date}' >= date_out)
+             OR ('#{@start_date}' >= date_in AND '#{@end_date}' <= date_out)")
   end
 
 end
