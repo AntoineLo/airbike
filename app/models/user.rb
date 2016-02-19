@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_attachment :picture
-
   has_many :bookings, dependent: :destroy
   has_many :bikes, dependent: :destroy
   # has_attachment :photo ?????
