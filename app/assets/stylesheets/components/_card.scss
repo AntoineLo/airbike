@@ -1,7 +1,7 @@
 .card {
   // padding: 10px;
-  height: 300px;
-  box-shadow: 1px 1px 1px #E86100;
+  height: 275px;
+  box-shadow: 0.5px 0.5px 0.5px #E86100;
 }
 .card-color {
   background-color: white;
@@ -12,12 +12,28 @@
   margin: 5px;
 }
 .card-photo {
-  padding-top: 10px;
   display: block;
   width: auto;
   max-height: 100%;
   text-align: center;
+  position : relative
 }
+
+.card-photo-background {
+  padding-top: 10px;
+  display: block;
+  width: auto;
+  height: 200px;
+  text-align: center;
+  background-position : center center;
+  background-size: cover;
+}
+.card-price {
+  position: absolute;
+  top: 10px;
+}
+
+
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -34,7 +50,8 @@
   padding-left: 10px;
 }
 .card-footer-text > h5 {
-  color: #3D3D3A;
+  color: grey;
+  font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
